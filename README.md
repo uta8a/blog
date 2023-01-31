@@ -19,3 +19,6 @@ Thanks to awesome project.
 - [lume](https://lume.land/)
   - MIT
   - deno製静的サイトジェネレータを使用してサイトを作っています。
+- [lumeland/lume.land](https://github.com/lumeland/lume.land)
+  - MIT
+  - HTML, CSSを参考にしました。
