@@ -5,6 +5,7 @@ const site = lume();
 site.ignore('misc');
 site.ignore('README.md');
 site.ignore('_content');
+site.ignore('_script');
 site.ignore('_template');
 
 export default site;
