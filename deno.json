@@ -3,6 +3,9 @@
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
     "build": "deno task lume",
-    "serve": "deno task lume -s"
+    "serve": "deno task lume -s",
+    "post": "deno run -A _script/cli.ts --post",
+    "diary": "deno run -A _script/cli.ts --diary",
+    "sync": "deno run -A _script/cli.ts --sync"
   }
 }
