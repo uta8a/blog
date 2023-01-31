@@ -49,6 +49,9 @@ site.use(modifyUrls({
     if (/^\/styles\//.test(url)) {
       return url;
     }
+    if (/^\/img\//.test(url)) {
+      return url;
+    }
     if (/^\/favicon\.ico/.test(url) || /^\/favicon-32x32\.png/.test(url) || /^\/favicon-16x16\.png/.test(url) || /^\/manifest\.json/.test(url) || /^\/apple-touch-icon\.png/.test(url)) {
       return url;
     }
