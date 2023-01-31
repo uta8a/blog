@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 'HiCoderの歴史を振り返る(2019-2022)'
-description: 広島大学コンピュータサークル HiCoder の昔話と振り返りをします。
 draft: false
+description: 広島大学コンピュータサークル HiCoder の昔話と振り返りをします。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-12-25T09:59:00+09:00
   - summary: 完成
     date: 2022-12-25T10:47:57+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:48:52+09:00
 ---
-
-# HiCoderの歴史を振り返る(2019-2022)
 
 　これは [広島大学 HiCoder & ゲーム制作同好会GSD Advent Calendar 2022](https://adventar.org/calendars/7845) の25日目の記事です。アドベントカレンダー、楽しかったですね！他の記事もぜひ読んでみてください。
 

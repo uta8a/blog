@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 10曲目 「十夏の花 / HoneyComeBear」'
-description: HoneyComeBear - 十夏の花 の感想を書きます。
 draft: false
+description: HoneyComeBear - 十夏の花 の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-09-21T21:25:24+09:00
@@ -10,16 +11,14 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T14:01:32+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:27:51+09:00
 ---
-
-# [感想] HappyEND 10曲目 「十夏の花 / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 十夏の花 (Official Video) - From "HappyEND"](https://youtu.be/WeGvPbjc040) の感想を書きます。
 
-https://youtu.be/WeGvPbjc040
-
-## # 感想
+# 感想
 
 　本当に 10 日間最高でしたね！！！HoneyComeBear、zinbei さん、アニメーターの方々に感謝...
 　アニメーションが大好きです。音楽ととてもとてもマッチしている... 最高...

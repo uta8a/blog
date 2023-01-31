@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 5曲目 「糸電話 / HoneyComeBear」'
-description: HoneyComeBear - 糸電話 の感想を書きます。
 draft: false
+description: HoneyComeBear - 糸電話 の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-08-06T22:26:50+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:53:13+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:19:47+09:00
 ---
-
-# [感想] HappyEND 5曲目 「糸電話 / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 糸電話 (Official Video)](https://youtu.be/Onxj7q19KTI) の感想を書きます。
@@ -20,7 +21,7 @@ changelog:
 
 [HoneyComeBear - 糸電話](https://youtu.be/Onxj7q19KTI)
 
-## # 感想
+# 感想
 
 　これも夢さんぽと同じく、アルバムの立ち位置的には打ち上げ星でガンガンに上げたテンションのクールダウンの意味合いがありそうです。
 　糸電話についてはループアニメーションと Kaako さんの声の無限の可能性が個人的に最高でした。まずループアニメーションは夜の表現がやばくて、夜明かりの感じとか透明感すごくてやばいです...Kaako さんの声もすごくて、夜の透明さと切なさに合う声、もう最高です...

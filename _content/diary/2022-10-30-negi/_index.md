@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: ねぎ
-description: traP聖地巡礼
 draft: false
+description: traP聖地巡礼
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-10-30T15:47:22+09:00
   - summary: 完成
     date: 2022-10-30T20:53:24+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:43:18+09:00
 ---
-
-# ねぎ
 
 　しろねぎさんと会ってtraP聖地巡礼をした話をします。
 

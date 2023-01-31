@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] traP LT 2022 これすき6選'
-description: 全 14 本の LT のうち僕が特にこれすきと思った 6 本について感想を書きます。
 draft: false
+description: 全 14 本の LT のうち僕が特にこれすきと思った 6 本について感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2022-03-28T13:13:00+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T14:09:11+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:34:05+09:00
 ---
-
-# [感想] traP LT 2022 これすき6選
 
 [traP LT 2022](https://connpass.com/event/242713/) が 2022/03/27 に開催されました。
 

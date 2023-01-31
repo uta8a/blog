@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 3曲目 「雨泳ぎ / HoneyComeBear」'
-description: HoneyComeBear - 雨泳ぎ の感想を書きます。
 draft: false
+description: HoneyComeBear - 雨泳ぎ の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-08-03T22:31:45+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:46:38+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:16:47+09:00
 ---
-
-# [感想] HappyEND 3曲目 「雨泳ぎ / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 雨泳ぎ (Official Video) - From "HappyEND"](https://youtu.be/ElPP-qv6nqA) の感想を書きます。
@@ -20,7 +21,7 @@ changelog:
 
 [HoneyComeBear - 雨泳ぎ](https://youtu.be/ElPP-qv6nqA)
 
-## # 感想
+# 感想
 
 　ループアニメーションを作ったならのさんの想像力というか、この画面構成がすごい。海の中を走るバス、光の感じとか水族館のようでいて不思議な感じがします。ちょっと不安な顔のリク、ずっと楽しそうなサチノがよく描かれていてとってもかわいい。
 　漫画も最高。2 ページ目のリクとサチノの明日を楽しみにする顔だけでもう一生生きていけそうです。遠足気分のような、雨が降るかもと分かっていてもそれすら楽しみなような、そして次の日を迎えて MV に接続し、遠くの水族館に向かうバスは雨の中を進みます。

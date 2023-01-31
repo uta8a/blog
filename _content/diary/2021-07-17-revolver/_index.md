@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: HoneyComeBearのRevolverについての考察
-description: HoneyComeBear という最高のアーティストがいて、そのアーティストが夏が来たことを知らせてくれました。
 draft: false
+description: HoneyComeBear という最高のアーティストがいて、そのアーティストが夏が来たことを知らせてくれました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-07-17T22:58:25+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:44:12+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:07:43+09:00
 ---
-
-# HoneyComeBearのRevolverについての考察
 
 　HoneyComeBear という最高のアーティストがいて、そのアーティストが夏が来たことを知らせてくれました。
 

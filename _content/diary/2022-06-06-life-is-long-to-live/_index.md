@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 人生は諦めるほど短くはないと思う
-description: 運と環境に恵まれたのもあるけど、人生は意外と長いのでなんとかなるぞと思ったのでした。
 draft: false
+description: 運と環境に恵まれたのもあるけど、人生は意外と長いのでなんとかなるぞと思ったのでした。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-06-06T07:03:28+09:00
   - summary: 記事書いた
     date: 2022-06-06T12:15:05+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:35:08+09:00
 ---
-
-# 人生は諦めるほど短くはないと思う
 
 　昨日人と会話をしていて、そういやこれまだ言葉にしてなかったなと思ったので書きます。
 

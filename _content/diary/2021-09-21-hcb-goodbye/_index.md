@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 9曲目 「さよならの支度 / HoneyComeBear」'
-description: HoneyComeBear - さよならの支度 の感想を書きます。
 draft: false
+description: HoneyComeBear - さよならの支度 の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-09-21T21:25:08+09:00
@@ -10,16 +11,14 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T14:00:41+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:26:27+09:00
 ---
-
-# [感想] HappyEND 9曲目 「さよならの支度 / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されていました。
 　ここでは [HoneyComeBear - さよならの支度 (Official Video) - From "HappyEND"](https://youtu.be/4cugGAKsSNY) の感想を書きます。
 
-https://youtu.be/4cugGAKsSNY
-
-## # 感想
+# 感想
 
 　この回はきみと君のクールダウン回のように感じられました。漫画も、第 1 話での学校、第 7 話での公園、第 4 話のロケット発射台が流れて終わりを感じさせます。サチノの顔が映っていないのが印象的で、サチノはこのときいったいどんな顔をしていたんでしょうか。
 　音楽はサビ部分が歌詞なしで印象的な感じで面白かったですね。入りからの優しい雰囲気が夜明けの少し前の町を高台から眺めている状況にとても合っていて、これから来る朝に、これから来るさよならの準備をするということをひしひしと感じます。

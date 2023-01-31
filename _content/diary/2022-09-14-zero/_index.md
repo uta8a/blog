@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 永遠に感じる時点で色褪せていて、終わりを知った時から人生は輝く
-description: 読書録 / DIE WITH ZERO
 draft: false
+description: 読書録 / DIE WITH ZERO
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-09-14T22:42:02+09:00
   - summary: 完成
     date: 2022-09-14T22:43:04+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:40:43+09:00
 ---
-
-# 永遠に感じる時点で色褪せていて、終わりを知った時から人生は輝く
 
 この記事は [DIE WITH ZERO　人生が豊かになりすぎる究極のルール](https://www.diamond.co.jp/book/9784478109687.html) を読んで個人的に考えた日記です。
 

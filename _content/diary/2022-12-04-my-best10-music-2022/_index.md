@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 2022年に聴いた曲から好きな10曲を紹介
-description: 主にSpotifyで聞いた曲から、今年聞いた好きな曲を選びました。
 draft: false
+description: 主にSpotifyで聞いた曲から、今年聞いた好きな曲を選びました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-12-04T23:27:24+09:00
   - summary: 下書きをコピペして完成
     date: 2022-12-04T23:29:11+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:47:31+09:00
 ---
-
-# 2022年に聴いた曲から好きな10曲を紹介
 
 この記事は [目黒ワンニャンパーク Advent Calendar 2022](https://adventar.org/calendars/7446) の5日目の記事です。
 前回は takanakahiko さんの1日目の[始まりの挨拶](https://twitter.com/takanakahiko/status/1598166387016753156)でした。気軽に投稿できるアドカレよき。

@@ -1,18 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 2022年の振り返り
-description: 2022年もお世話になりました。
-og_image: ogp-1.jpg
 draft: false
+description: 2022年もお世話になりました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-12-31T14:45:32+09:00
   - summary: 完成
     date: 2022-12-31T15:21:00+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:50:18+09:00
 ---
-
-# 2022年の振り返り
-
 
 [2020年振り返り](https://blog.uta8a.net/diary/2020-12-28-goodbye/) は書いたけど、2021年年末は体調が終わっていてホロライブの配信を一日14時間とか眺めてたので振り返っていません。2022年は無事に振り返ることができそう。
 

@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 2曲目 「夢さんぽ / HoneyComeBear」'
-description: HoneyComeBear - 夢さんぽ の感想を書きます。
 draft: false
+description: HoneyComeBear - 夢さんぽ の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-08-03T16:02:40+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:49:07+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:15:04+09:00
 ---
-
-# [感想] HappyEND 2曲目 「夢さんぽ / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 夢さんぽ (Official Video)](https://youtu.be/fLlwCEZoG8Y) の感想を書きます。
@@ -20,9 +21,7 @@ changelog:
 
 [HoneyComeBear - 夢さんぽ](https://youtu.be/fLlwCEZoG8Y)
 
-https://twitter.com/honeycomebear/status/1422136568005816321
-
-## # 感想
+# 感想
 
 　これ漫画がよすぎるから漫画を見てほしい！！！！！！
 　サチノのかわいい感じが描かれていて、リクのそっけなくしてしまうところが出ていて、よすぎる。サチノはマジで何も知らずに明るく振る舞い、リクは結末を知っているから暗くなってしまったり歯がゆい思いをしたりするんだろうなと思います。これ HappyEND というタイトルではあるけれど、リクも読者もエンディングから先に見せられているので Happy にするのはサチノだけなんじゃないかと思ったりしますが、結末はどうなるんでしょうか。早く結末が見たいけれど、HoneyComeBear の曲が毎日一曲ずつリリースされるなんていう幸福すぎる時間が終わってしまうのは悲しいのでゆっくり結末まで曲を聴きまくりながら迎えていきたい。

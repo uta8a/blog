@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: 技育博に参加した記録
-description: サポーターズ主催の技育博というイベントに参加してきました。楽しかったので参加記録です。
 draft: false
+description: サポーターズ主催の技育博というイベントに参加してきました。楽しかったので参加記録です。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-06-27T13:39:16+09:00
   - summary: 完成
     date: 2022-06-28T06:30:33+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:36:18+09:00
 ---
-
-# 技育博に参加した記録
 
 サポーターズ主催の技育博というイベントに参加してきました。楽しかったので参加記録です。
 

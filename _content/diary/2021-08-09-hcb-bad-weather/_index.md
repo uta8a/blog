@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 7曲目 「悪天 / HoneyComeBear」'
-description: HoneyComeBear - 悪天 の感想を書きます。
 draft: false
+description: HoneyComeBear - 悪天 の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-08-09T09:45:31+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:57:50+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:23:55+09:00
 ---
-
-# [感想] HappyEND 7曲目 「悪天 / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 悪天 (Official Video) - From "HappyEND"](https://youtu.be/n9UY6eOL6ko) の感想を書きます。
@@ -20,7 +21,7 @@ changelog:
 
 [HoneyComeBear - 悪天](https://youtu.be/n9UY6eOL6ko)
 
-## # 感想
+# 感想
 
 　これ HappyEND 現時点で一番好きかもしれない。歌詞がシンプルで、HappyEND で公開されている曲の中でも短い曲になっている。それでいて染み渡るどうしようもなさというか、リクの心情が伝わってきます。サウンドも暗いストーリーで悲しいはずなのにかっこいいというか、クールさがあって最高で勝利している。
 　 7 日目の喧嘩がリクにとって一番の後悔で、リクがサチノの後を追った理由となっていたのでした。そのためここはかなり大きく物語が動くと踏んでいたのですがめちゃくちゃ大きくうごきましたね...漫画のブレスレットをサチノも持っていてサチノが最後まで変わらない日常がいい...！というセリフから、サチノも 10 日間の猶予を与えられているであろうことが分かりました(そしてこれは 8 日目で明かされています)

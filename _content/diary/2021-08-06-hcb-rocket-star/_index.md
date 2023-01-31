@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: '[感想] HappyEND 4曲目 「打ち上げ星 / HoneyComeBear」'
-description: HoneyComeBear - 打上げ星 の感想を書きます。
 draft: false
+description: HoneyComeBear - 打上げ星 の感想を書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-08-06T23:12:18+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:56:41+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:22:43+09:00
 ---
-
-# [感想] HappyEND 4曲目 「打ち上げ星 / HoneyComeBear」
 
 　HoneyComeBear が、8/1 - 8/10 の間アルバムに収録される曲を Youtube で公開していくそうです。[zinbei さん](https://twitter.com/tz036) の漫画も曲と同期して少しづつ公開され、ストーリーが展開されています。
 　ここでは [HoneyComeBear - 打上げ星 (Official Video) - From "HappyEND"](https://youtu.be/V_gMTu3n4Mc) の感想を書きます。
@@ -20,7 +21,7 @@ changelog:
 
 [HoneyComeBear - 打上げ星](https://youtu.be/V_gMTu3n4Mc)
 
-## # 感想
+# 感想
 
 　これ王道の曲で、アルバムの中でもメインディッシュ的な位置づけになりそうですね！最高です。
 　マジで毎日最高の曲しかリリースしてなくてびっくりします。毎日テンションが歴代最高を更新するくらい心が揺り動かされていて留まるところを知りません。大好きです。

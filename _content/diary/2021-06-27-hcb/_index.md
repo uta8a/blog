@@ -1,8 +1,9 @@
 ---
-layout: diary
+type: diary
 title: 何度も繰り返し聞いた音楽が支えになる
-description: ずっと繰り返し聞く音楽は、そのときの心の支えになると思っています
 draft: false
+description: ずっと繰り返し聞く音楽は、そのときの心の支えになると思っています
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-06-27T23:29:51+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T13:38:24+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:03:55+09:00
 ---
-
-# 何度も繰り返し聞いた音楽が支えになる
 
 この 2 日はずっとこの曲を聴いています。
 

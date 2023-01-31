@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: '[感想] KeyFragments'
-description: 2022秋M3に僅差で行けず、boothでCDを買いました。
 draft: false
+description: 2022秋M3に僅差で行けず、boothでCDを買いました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2022-11-22T08:12:49+09:00
   - summary: 完成
     date: 2022-11-22T08:56:36+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:46:16+09:00
 ---
-
-# [感想] KeyFragments
 
 以下個人的な感想です。
 

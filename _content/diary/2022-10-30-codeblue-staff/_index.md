@@ -1,16 +1,17 @@
 ---
-layout: diary
+type: diary
 title: codeblue 2022 の学生スタッフの感想
-description: セキュリティカンファレンス codeblue の学生スタッフをしてきました。
 draft: false
+description: セキュリティカンファレンス codeblue の学生スタッフをしてきました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-10-30T14:01:16+09:00
   - summary: 書いた
     date: 2022-10-30T15:31:00+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:41:54+09:00
 ---
-
-# codeblue 2022 の学生スタッフの感想
 
 　codeblueという、世界の名だたるセキュリティリサーチャーたちの講演が聞けて、国際的な交流もできるお祭りのような雰囲気の最先端カンファレンスに学生スタッフとして行ってきました。以下その感想を書きます。
 
