@@ -1,0 +1,32 @@
+---
+layout: ./base.njk
+page_css: content.css
+---
+
+<div class="content">
+  <header class="content-header">
+    <h1 class="title">{{ title }}</h1>
+  </header>
+
+  <main class="content-body">
+    {{ body | md | safe }}
+  </main>
+
+  <footer class="content-footer">
+    <details>
+      <summary>変更履歴</summary>
+      <ol>
+      {% for log in changelog %}
+        <li>
+        {{ log.summary | md | safe }}
+        {{ log.date }}
+        </li>
+      {%  endfor %}
+      </ol>
+    </details>
+    <ul class="content-pagination">
+      {# TODO: 他の記事のレコメンド お弁当箱 #}
+      {# TODO: comment using github discussion #}
+    </ul>
+  </footer>
+</div>

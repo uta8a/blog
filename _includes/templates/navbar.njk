@@ -1,0 +1,25 @@
+<nav class="navbar-container">
+  <div class="navbar">
+    <a href="/" class="navbar-logo" aria-label="Return home">
+      <span {% if root %}class="title"{% endif %}>diaryです</span>
+    </a>
+
+    <ul class="navbar-menu">
+      <li>
+        <a href="/post/" {% if main_menu == "post" %}class="is-selected"{% endif %}>
+          技術記事
+        </a>
+      </li>
+      <li>
+        <a href="/diary/" {% if main_menu == "diary" %}class="is-selected"{% endif %}>
+          日記
+        </a>
+      </li>
+      <li>
+        <a href="/" target="_blank" rel="noopener noreferrer">
+          About(WIP)
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

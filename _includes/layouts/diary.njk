@@ -1,0 +1,25 @@
+---
+layout: ./base.njk
+page_css: diary.css
+---
+
+<div class="diary">
+  <header class="diary-header">
+    <h1 class="title">{{ title }}</h1>
+  </header>
+
+  <main class="diary-body">
+    <ol>
+      {% for content in body %}
+      <li>
+        <a href="{{ content.path }}">
+          <img src="/img/{{ content.path }}/ogp.webp" />
+          <span>{{ content.title }}</span>
+          <span>{{ content.description }}</span>
+          <span>{{ content.created }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </main>
+</div>

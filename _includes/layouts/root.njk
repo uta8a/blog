@@ -1,0 +1,26 @@
+---
+layout: ./base.njk
+page_css: root.css
+---
+
+<div class="root">
+  <header class="root-header">
+    <h1 class="title">{{ title }}</h1>
+  </header>
+
+  <main class="root-body">
+    <ol>
+      {% for content in body %}
+      <li>
+        <a href="{{ content.path }}">
+          <img src="/img/{{ content.path }}/ogp.webp" />
+          <span>{{ content.title }}</span>
+          <span>{{ content.description }}</span>
+          <span>{{ content.created }}</span>
+          <span>{{ content.ty }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </main>
+</div>
