@@ -34,33 +34,35 @@ site.use(imagick());
 site.use(katex());
 site.use(date());
 site.use(modifyUrls({
-  fn: (url) => {
+  fn: (url, page) => {
+    /// Ignore URL link
     if (/^http:/.test(url)) {
       return url;
     }
     if (/^https:/.test(url)) {
       return url;
     }
-    // ./image.png -> image.png
+    /// ignore specify assets
+    if (/^\/fonts\//.test(url)) {
+      return url;
+    }
+    if (/^\/styles\//.test(url)) {
+      return url;
+    }
+    if (/^\/favicon\.ico/.test(url) || /^\/favicon-32x32\.png/.test(url) || /^\/favicon-16x16\.png/.test(url) || /^\/manifest\.json/.test(url) || /^\/apple-touch-icon\.png/.test(url)) {
+      return url;
+    }
+    /// ./image.png -> image.png
     if (/\.\//.test(url)) {
       url = url.slice(2);
     }
-    // if (/^image\//.test(url)) {
-    //   // image.1.png#small -> image_1-small.webp
-    //   if (/\.[^\.]*#small$/.test(url)) {
-    //     return url.replace(/^image/, '/img').replace(/\.[^\.]*#small$/, '-small').replaceAll('.', '_') + '.webp'
-    //   }
-    //   // image.1.png#big -> image_1-big.webp
-    //   if (/\.[^\.]*#big$/.test(url)) {
-    //     return url.replace(/^image/, '/img').replace(/\.[^\.]*#big$/, '-big').replaceAll('.', '_') + '.webp'
-    //   }
-    //   // image.1.png -> image_1.webp
-    //   if (/\.[^\.]*$/.test(url)) {
-    //     return url.replace(/^image/, '/img').replace(/\.[^\.]*$/, '').replaceAll('.', '_') + '.webp'
-    //   }
-    //   // other
-    //   return url.replace(/^image/, '/img')
-    // }
+    /// dotが含まれたら画像と見做してしまうことにする
+    if (/\./.test(url)) {
+      const splitted = url.split('.');
+      splitted.pop();
+      return `/img/${page.src.path}/${splitted.join('.')}.webp`
+    }
+    /// その他はそのまま返す
     return url
   }
 }));
