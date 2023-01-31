@@ -18,8 +18,7 @@ page_css: content.css
       <ol>
       {% for log in changelog %}
         <li>
-        {{ log.summary | md | safe }}
-        {{ log.date }}
+        {{ log.date | date('DATETIME') }}: {{ log.summary | md | striptags | safe }}
         </li>
       {%  endfor %}
       </ol>
