@@ -47,11 +47,12 @@ interface Data {
 }
 
 type Content = {
-  ty: 'post' | 'diary',
-  title: string,
-  description: string,
-  path: string,
-  date: string,
+  ty: 'post' | 'diary';
+  title: string;
+  description: string;
+  path: string;
+  date: string;
+  created: string;
 }
 
 const getTy = (path: string): string => {
@@ -66,6 +67,10 @@ const getSlug = (path: string): string => {
 
 const pipelinedOgp = (ty: string, slug: string, basename: string): string => {
   return `/img/${ty}/${slug}/${basename}`
+}
+
+const getCreated = (slug: string): string => {
+  return slug.slice(0, 10);
 }
 
 const initSync = async () => {
@@ -132,7 +137,8 @@ const syncContent = async (): Promise<void> => {
       title: attrs.title,
       description: attrs.description,
       path: `/${ty}/${slug}`,
-      date: lastEdited
+      date: lastEdited,
+      created: getCreated(slug),
     });
   }
   /// index page
@@ -142,7 +148,7 @@ const syncContent = async (): Promise<void> => {
     title: "技術記事一覧 - diaryです",
     description: "技術記事一覧",
     ogp: "/img/post/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'post'),
+    body: articles.filter(v => v.ty === 'post').sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
   }
   await Deno.writeTextFile(
     `./post/index.yml`,
@@ -154,7 +160,7 @@ const syncContent = async (): Promise<void> => {
     title: "日記一覧 - diaryです",
     description: "日記一覧",
     ogp: "/img/diary/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'diary'),
+    body: articles.filter(v => v.ty === 'diary').sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
   }
   await Deno.writeTextFile(
     `./diary/index.yml`,
@@ -166,7 +172,7 @@ const syncContent = async (): Promise<void> => {
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles,
+    body: articles.sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
   }
   await Deno.writeTextFile(
     `./index.yml`,
