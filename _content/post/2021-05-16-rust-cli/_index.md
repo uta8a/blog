@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: Rustでmkdir -pみたいな簡単なCLIツールを作って学んだこと
-description: mkdir -p のような CLI ツールを作ったときに学んだメモです。
 draft: false
+description: mkdir -p のような CLI ツールを作ったときに学んだメモです。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-05-16T09:23:37+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:46:11+09:00
 ---
 
 競技プログラミングを再開しようとして、Rust でディレクトリをつくるのがめんどくさいことに気づきました。 `mkdir -p` のような CLI ツールを作ったときに学んだメモです。

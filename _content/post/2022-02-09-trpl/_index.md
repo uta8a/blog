@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: The Rust Programming Language を読んだ
-description: The Rust Programming Language 日本語版を読みました
 draft: false
+description: The Rust Programming Language 日本語版を読みました
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2022-02-09T20:47:06+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:58:41+09:00
 ---
 
 [The Rust Programming Language 日本語版](https://doc.rust-jp.rs/book-ja/title-page.html) を読み終えました。Rust 2018 Edition に該当します。

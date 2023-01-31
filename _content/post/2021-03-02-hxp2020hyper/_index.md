@@ -1,23 +1,26 @@
 ---
-layout: post
+type: post
 title: 超楕円曲線についてメモ / hxp ctf 2020 hyper
+draft: true
 description: hxp ctf 2020 hyper を学ぶ
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-03-02T21:18:08+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:42:13+09:00
 ---
 
 - この記事は[hxp ctf 2020 hyper](https://ctftime.org/task/14387)の writeup を読んで超楕円曲線について学んだ記録です。
 - 間違いなどあれば[@kaito_tateyama](https://twitter.com/kaito_tateyama)にお知らせいただけると幸いです。
 
-## # hyper
+# hyper
 
 - 問題概要
 
-## ## 超楕円曲線と楕円曲線の違い
+## 超楕円曲線と楕円曲線の違い
 
 - **def.** 超楕円曲線
 - 体$K$上の種数(genus) $g$ の超楕円曲線は以下のように定義される。
@@ -46,7 +49,7 @@ $$
 - $\deg(f(x))$は多項式の最大次数を表す。
 - Monic とは、最大次数の係数が$1$であることを表す。
 
-## ## 超楕円曲線の定義の仕方について
+## 超楕円曲線の定義の仕方について
 
 - 英語版 wikipedia や、hxp/hyper の writeup をいくつか見て、超楕円曲線の定義の仕方は複数あることが分かった。
 - 上の定義とは別の定義では、

@@ -1,13 +1,16 @@
 ---
-layout: post
-title: waka-boxを使ってみる 広島大学ITエンジニアアドベントカレンダー
+type: post
+title: waka-boxを使ってみる
+draft: true
 description: 広島大学 IT エンジニアアドベントカレンダーの 4 日目です。
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-12-02T04:38:30+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:02:36+09:00
 ---
 
 この記事は [広島大学 IT エンジニアアドベントカレンダー] の 4 日目です。  

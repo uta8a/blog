@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: LTに向けた資料たち
+draft: true
 description: LTに必要なデザインなどの資料
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-08-25T21:51:45+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:57:37+09:00
 ---
 
 そろそろブログの整理をしないといけない  

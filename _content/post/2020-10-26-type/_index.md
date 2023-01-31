@@ -1,16 +1,19 @@
 ---
-layout: post
+type: post
 title: プログラミング意味論の基礎を読みました
+draft: true
 description: プログラミング意味論の基礎を読んでいる途中のメモ
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-10-26T14:56:27+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:20:36+09:00
 ---
 
-- また読んでいる途中です。
+- まだ読んでいる途中です。
 
 ## 第 1 章
 

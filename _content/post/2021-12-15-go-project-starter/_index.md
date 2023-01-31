@@ -1,18 +1,19 @@
 ---
-layout: post
+type: post
 title: 僕がGoのプロジェクトを作ったらまずやることメモ
+draft: true
 description: この記事の目的は、Go のプロジェクトを作るときに毎回自分が調べてしまうことを整理して、プロジェクトを作るハードルを下げることです。
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-12-15T12:52:44+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:56:05+09:00
 ---
 
-::: messages notice
 この記事の目的は、Go のプロジェクトを作るときに毎回自分が調べてしまうことを整理して、プロジェクトを作るハードルを下げることです。
-:::
 
 ## 何から始めるか
 

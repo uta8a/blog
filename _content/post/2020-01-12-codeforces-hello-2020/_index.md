@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: Codeforces Hello 2020 Writeup
-description: C 問題についてのみ書きます。
 draft: false
+description: C 問題についてのみ書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-01-12T06:44:01+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:11:58+09:00
 ---
 
 C 問題についてのみ書きます。

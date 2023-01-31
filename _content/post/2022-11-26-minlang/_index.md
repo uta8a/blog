@@ -1,8 +1,9 @@
 ---
-layout: post
+type: post
 title: 既存言語のミニ版ぽいものまとめた
-description: MinCaml, minrubyなど色々あるので調べた
 draft: false
+description: MinCaml, minrubyなど色々あるので調べた
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-11-26T11:53:47+09:00
@@ -12,9 +13,9 @@ changelog:
     date: 2022-11-30T22:20:16+09:00
   - summary: 関数型言語の実装のチュートリアルを追記
     date: 2022-12-02T10:43:20+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T22:04:26+09:00
 ---
-
-# 既存言語のミニ版ぽいものまとめた
 
 東大のCPU実験の記事を読んでいたらお馴染みの [MinCaml](https://esumii.github.io/min-caml/) の他にもいくつか既存言語のミニ版があり、探してみました。
 他にもおすすめのミニ言語あれば [Twitter: @kaito_tateyama](https://twitter.com/kaito_tateyama) 宛、もしくは [discussionにコメント](https://github.com/uta8a/discussion/discussions/1) で教えてください。

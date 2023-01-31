@@ -1,14 +1,15 @@
 ---
-layout: post
+type: post
 title: SECCON Beginners CTF 2022 (ctf4b) writeup
-description: 解いた問題は Welcome / Util / hitchhike4b / CoughingFox / Command / Quiz / BeginnersBot / H2 / phisher / Recursive / WinTLS でした。
 draft: false
+description: 解いた問題は Welcome / Util / hitchhike4b / CoughingFox / Command / Quiz / BeginnersBot / H2 / phisher / Recursive / WinTLS でした。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-06-05T15:25:25+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T22:00:44+09:00
 ---
-
-# SECCON Beginners 2022 (ctf4b) writeup
 
 ## 概要
 

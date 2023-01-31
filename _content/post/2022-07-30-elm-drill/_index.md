@@ -1,14 +1,15 @@
 ---
-layout: post
+type: post
 title: 'Elmドリル - jinjor/elm-drill - に取り組んでみた'
-description: 良さそうなElmに慣れるためのドリルがあったのでやってみました
 draft: false
+description: 良さそうなElmに慣れるためのドリルがあったのでやってみました
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-07-30T18:14:30+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T22:01:57+09:00
 ---
-
-# Elmドリル - jinjor/elm-drill - に取り組んでみた
 
 ## 概要
 

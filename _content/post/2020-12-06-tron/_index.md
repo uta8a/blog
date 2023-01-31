@@ -1,20 +1,23 @@
 ---
-layout: post
+type: post
 title: ゲームAIプログラミング codingameのTronをやってみる
-description: 広島大学 IT エンジニア Advent Calendar 2020 の 8 日目です
 draft: false
+description: 広島大学 IT エンジニア Advent Calendar 2020 の 8 日目です
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-12-06T17:58:48+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:27:45+09:00
 ---
 
 - **2020/12/08 修正** codingame のソース全公開は運営から注意を受けることがあるそうなので、部分公開に変更しました。
 - この記事は、[広島大学 IT エンジニア Advent Calendar 2020](https://adventar.org/calendars/5209) の 8 日目です。みんな間に合わせていてえらい。
 - 今回は、ゲーム AI プログラミングができるサイト [CodinGame](https://www.codingame.com/home) にチャレンジしてみました。僕は bfs を実装してヤッター！な初心者なので、お手柔らかにお願いします。
 
-## # CodinGame ってなに？
+# CodinGame ってなに？
 
 - CodinGame, 通称「こどげ」はプログラミングでゲームをして遊べるサイトのようです。よく分かっていませんが、今回紹介するゲーム AI Bot を作って戦わせるタイプの他にも、最適化部門もあるようです。今回は [TRON](https://www.codingame.com/multiplayer/bot-programming/tron-battle) という bot プログラミング部門の入門的な立ち位置のゲームで遊んでいきます。
 - 使える言語は [こちらの FAQ](https://www.codingame.com/faq) にまとまっています。僕は Rust を使うので、
@@ -26,7 +29,7 @@ Includes chrono 0.4.9, itertools 0.8.0, libc 0.2.62, rand 0.7.2, regex 1.3.0, ti
 
 - 今確認して知ったんですが `rand` crate あるやんけ！線形合同法のコードを引っ張ってきてしまった。
 
-## # やってみる
+# やってみる
 
 - 2 年ほど前にちょっと触った(サンプル動かした程度)ので、アカウントは作っていました。
 
@@ -45,16 +48,16 @@ Includes chrono 0.4.9, itertools 0.8.0, libc 0.2.62, rand 0.7.2, regex 1.3.0, ti
 
 ![p-4](./p-4.png)
 
-## # ゲームのルール
+# ゲームのルール
 
 - 光をできるだけ長く伸ばす(長い時間生き残る)と勝ちです。壁や、相手の光に当たると消滅してしまい、負けになります。
 
-## # とりあえずサンプルを動かす
+# とりあえずサンプルを動かす
 
 - 書いてあるものをそのままテストプレイすると、毎回左に動くのでそのまま壁に激突して TRON 人生が終了します。
 - これではいけません。
 
-## # 改良の前に、コードを書くときのフレームを考える
+# 改良の前に、コードを書くときのフレームを考える
 
 - いろいろ書き直したり調べていると、以下のように考えるとよいことに気づきました。
 
@@ -64,7 +67,7 @@ Includes chrono 0.4.9, itertools 0.8.0, libc 0.2.62, rand 0.7.2, regex 1.3.0, ti
 - 次に、例えばいまきた道には引き返せない、壁は無理、といった制約から合法な手が決まります(Legal Move)
 - 最後に、Legal Move の中から一番よさげな手を選びます(Best Move)
 
-## # 最初の改良
+# 最初の改良
 
 - まずは Legal Move を実装して、Best Move のところではランダムに選んでしまうことにしました。
 - 線形合同法は Linux Programming お気楽 Rust プログラミング超入門 さんのコードを参考にしました。ありがとうございます。
@@ -77,7 +80,7 @@ let best_move = legal_move[rng.rand(legal_move.len() as u32 -1) as usize];
 - このコードで Wood 1 でちょっと勝てるようになりました。
 - しかしボスを倒すにはまだまだ足りないようです。
 
-## # 次の改良 bfs をしてみる
+# 次の改良 bfs をしてみる
 
 - 少し考えて、「もしかしてその場で legal move それぞれに対し dfs/bfs を行い、一番遠くに行けるような手を選べば勝てるのでは？」と思いつきました。やってみましょう。
 - Best Move を選ぶ部分は以下のようになります。bfs っぽいことをしています。
@@ -129,7 +132,7 @@ let best_move = _best_move;
 
 ![p-6](./p-6.png)
 
-## # 終わりに
+# 終わりに
 
 - めっちゃビジュアライザが楽しいので対戦中の動画ずーっと眺めてしまいますね。
 - 次の目標は silver ですが、Minimax 法とか勉強しないと無理そう感あるので(ただ bronze レベルだとまだ大丈夫らしい？)勉強していかんとなあ。

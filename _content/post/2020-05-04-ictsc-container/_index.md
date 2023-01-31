@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: ICTSC 2019 一次予選 コンテナが作れない 復習
-description: コンテナがつくれない を復習します
 draft: false
+description: コンテナがつくれない を復習します
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-05-03T23:42:39Z
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:13:29+09:00
 ---
 
 復習する問題は [コンテナがつくれない](https://blog.icttoracon.net/2019/08/27/ictsc2019-%e4%b8%80%e6%ac%a1%e4%ba%88%e9%81%b8-%e5%95%8f%e9%a1%8c%e8%a7%a3%e8%aa%ac-%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e3%81%8c%e4%bd%9c%e3%82%8c%e3%81%aa%e3%81%84/) です。

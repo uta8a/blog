@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: AtCoder ドワンゴからの挑戦状 予選
-description: B 問題のみ書きます。
 draft: false
+description: B 問題のみ書きます。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-01-12T08:33:49+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:10:46+09:00
 ---
 
 B 問題のみ書きます。

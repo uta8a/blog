@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: SECCON CTF 2019 qual Writeup
-description: 2019/10/19(土)15:00-2019/10/20(日)15:00 まで開催されていた、SECCON CTF 2019 qual にチーム StarrySky で参加していました。
 draft: false
+description: 2019/10/19(土)15:00-2019/10/20(日)15:00 まで開催されていた、SECCON CTF 2019 qual にチーム StarrySky で参加していました。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-10-20T15:32:17+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:01:21+09:00
 ---
 
 2019/10/19(土)15:00-2019/10/20(日)15:00 まで開催されていた、SECCON CTF 2019 qual にチーム StarrySky で参加していました。今回は mitsu さんが基本情報を受けるのでお休みで、一人チームでの参加となりました。  

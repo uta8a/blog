@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: 週間ブックマーク 2021/05/09 - 2021/05/13
-description: 記事を読んだ記録や小さなメモ。
 draft: false
+description: 記事を読んだ記録や小さなメモ。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-05-09T07:01:45+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:43:59+09:00
 ---
 
 記事を読んだ記録や小さなメモ。

@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: はじめて学ぶバイナリ解析 を読んだ
-description: はじめて学ぶバイナリ解析 の読書録
 draft: false
+description: はじめて学ぶバイナリ解析 の読書録
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2022-01-18T05:28:15+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:57:27+09:00
 ---
 
 [はじめて学ぶバイナリ解析 不正なコードからコンピュータを守るサイバーセキュリティ技術](https://nextpublishing.jp/book/11353.html) を読み終えました。

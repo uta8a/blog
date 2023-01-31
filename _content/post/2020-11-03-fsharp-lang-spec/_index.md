@@ -1,13 +1,16 @@
 ---
-layout: post
-title: F#でちょっと遊ぶ - 1 - 単純な電卓
+type: post
+title: 'F#でちょっと遊ぶ - 1 - 単純な電卓'
+draft: true
 description: F#って言語機能が強くて、Haskell のような、言語処理系界のスーパーカーに見えます。(個人の感想です。)
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-11-03T07:29:55+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:22:31+09:00
 ---
 
 - F#って言語機能が強くて、Haskell のような、言語処理系界のスーパーカーに見えます。(個人の感想です。)

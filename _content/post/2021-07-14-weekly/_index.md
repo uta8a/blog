@@ -1,16 +1,19 @@
 ---
-layout: post
+type: post
 title: 週刊ブックマーク 7/12 - 7/18
-description: 記事を読んだ記録
 draft: false
+description: 記事を読んだ記録
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-07-14T07:44:37+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:51:06+09:00
 ---
 
-## 記事
+# 記事
 
 - [eshiho's Blog - Segment Tree](https://shiho-elliptic.tumblr.com/post/187841789319/segment-tree) elliptic shiho さんによるセグメント木の数学的な説明。
 - [うさぎ小屋 - アセンブリ言語で lifegame を書いた](https://kimiyuki.net/blog/2016/01/07/lifegame-in-assembly/) kimiyuki さんによる記事。
@@ -26,7 +29,7 @@ changelog:
 - [TFHE](https://tfhe.github.io/tfhe/) Fast Fully Homomorphic Encryption over the Torus 完全準同型暗号
 - [セキュリティキャンプ 2020 資料置き場](https://nindanaoto.github.io/) nindanaoto さんの資料が置いてある。
 
-## todo!
+# todo!
 
 記事を読んで、これやりたいなと思ったアイデア集。実際に手を動かしてできるのはごく一部だけど面白そうという気持ちをメモっておくのが大事。
 

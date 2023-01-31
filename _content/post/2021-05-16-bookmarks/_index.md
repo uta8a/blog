@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: 週刊ブックマーク 5/14 - 6/28
-description: 記事を読んだ記録や小さなメモ。
 draft: false
+description: 記事を読んだ記録や小さなメモ。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-05-16T09:23:46+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:45:05+09:00
 ---
 
 - [絵文字をファビコンとして表示する簡単な方法](https://zenn.dev/catnose99/articles/3d2f439e8ed161) 仕組みは SVG をファビコンに指定できるので、テキストを SVG に埋め込めばいけるという話。個人的に、開発で favicon が vercel の三角形になりがちなのでこういう手軽さはよいと思った。

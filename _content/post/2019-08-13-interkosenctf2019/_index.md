@@ -1,8 +1,9 @@
 ---
-layout: post
+type: post
 title: InterKosenCTF 2019 Writeup
-description: CTFのwriteupです
 draft: false
+description: CTFのwriteupです
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-08-13T07:12:48+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書の整形をした
     date: 2022-05-26T14:22:31+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:52:20+09:00
 ---
-
-# InterKosenCTF 2019 Writeup
 
 InterKosenCTF2019 に mitsu さんと二人で、チーム StarrySky として参加しました。成績はチームで 13 位/91 人が正の得点、個人では 12 位でした。得点は、4332pts のうち 2944pts を入れました。
 
@@ -48,7 +49,7 @@ saferm と E-Sequel-Injection が通せたのは嬉しかったです
     - [E-Sequel-Injection](#e-sequel-injection)
 - [最後に](#最後に)
 - [復習](#復習)
-  - [basic_crackme](#basic_crackme)
+  - [basic\_crackme](#basic_crackme)
   - [ref](#ref)
 
 ### Welcome

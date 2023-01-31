@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: 競プロ用ライブラリuta8alibの環境構築
+draft: true
 description: 競技プログラミング用ライブラリの環境構築について書きます。
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-01-10T08:13:00+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:08:00+09:00
 ---
 
 [uta8alib](https://github.com/uta8a/uta8alib)という競技プログラミング用ライブラリの環境構築について書きます。  

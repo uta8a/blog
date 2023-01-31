@@ -1,8 +1,9 @@
 ---
-layout: post
+type: post
 title: 木の作り方
+draft: true
 description: 木の作り方を複数書きます
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-08-19T17:44:24+09:00
@@ -10,9 +11,9 @@ changelog:
     date: 2022-05-25T07:19:22+09:00
   - summary: 文書を整形した
     date: 2022-05-26T17:20:07+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T20:54:57+09:00
 ---
-
-# 木の作り方
 
 ABC138D Ki を本番で嘘解法で通してしまった(after_contest で気づいた)ので、AC コードと自分のコードにランダムにケースを入れて Hack ケースを探そう！と思いました。このとき、木のテストケースの作り方が分からなかったので Twitter で教えてもらいました。以下、それらをまとめておきます。意見をくださった方、ありがとうございます。
 

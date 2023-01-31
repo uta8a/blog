@@ -1,18 +1,23 @@
 ---
-layout: post
-title: InterKosenCTF 2020 writeup & 後追い
-description: writeupと後追い
+type: post
+title: 'InterKosenCTF 2020 writeup & 後追い'
 draft: false
+description: writeupと後追い
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-09-06T16:30:26-07:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:15:22+09:00
 ---
 
 # note
 
 まずは解いたやつを書いておく。
+
+書きかけで、後追いは途中までです。
 
 # 目次
 

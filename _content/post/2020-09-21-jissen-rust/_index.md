@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: 実践Rustプログラミング入門を読みました
-description: 実践Rustプログラミング入門を読んだ感想
 draft: false
+description: 実践Rustプログラミング入門を読んだ感想
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-09-21T11:50:39+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:17:50+09:00
 ---
 
 - [実践 Rust プログラミング入門](https://www.shuwasystem.co.jp/book/9784798061702.html) を読んだので感想を書きます。

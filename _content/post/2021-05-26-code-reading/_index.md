@@ -1,27 +1,30 @@
 ---
-layout: post
-title: '[draft] 誰かのコードを読んで学ぶ'
+type: post
+title: 誰かのコードを読んで学ぶ
+draft: true
 description: 誰かのコードを読んで学びます
-draft: false
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-05-26T19:49:01+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:47:07+09:00
 ---
 
 人のコードを読んでいいところを学んでいこうと思います。traP の traQ, NeoShowcase, camphor-の relaym あたりは読んでいきたいです。
 今回は、色々見て回って[mazrean/separated-webshell](https://github.com/mazrean/separated-webshell)がよさそうだと感じたので読みます。
 
-# # 前提条件
+# 前提条件
 
 - repository: [https://github.com/mazrean/separated-webshell](https://github.com/mazrean/separated-webshell)
 - 2021/05/26 時点での`main`ブランチの最新を対象とします。(commit hash: `5c3e14c32cc5582e9768467f02d22217ac1b6759`)
 - ソースコードの解説というより、僕が知らなかったことを解説するみたいな方針でブログに残します(ソースコードの解説は製作者にしかできないので)
 
-# # コードを読む
+# コードを読む
 
-## ## 概要
+### 概要
 
 おそらく、[CPCTF を支えたインフラ](https://trap.jp/post/1303/)で紹介されている、Webshell の中で動いている ssh-separator がこれに当たると思われます。CTF で使うために、SSH した先を各コンテナに振り分けているようです。
 記事では、
@@ -30,7 +33,7 @@ changelog:
 
 とあるので、traP ブログで解説が出るのを楽しみにしています。
 
-## ## CI/CD
+### CI/CD
 
 GitHub Actions を使用していて、Lint を走らせて報告させる`main.yml`, tag を打ったときに release する`release.yml`の 2 つが走ります。
 
@@ -134,20 +137,20 @@ Docker Image は save/load で tar.gz に固めて VPS に直接送って展開�
 ghcr は public beta。以下の記事が詳しい。現在は Personal Access Token が必要で、`secrets.GITHUB_TOKEN`でできる Packages に比べると少し手間がかかる。
 https://www.kaizenprogrammer.com/entry/2020/09/03/060236
 
-## ## 使っているライブラリ
+### 使っているライブラリ
 
 (draft: コード本体を読まないと使い方わからないものも多いので、後回し)
 
-## ## コード本体
+### コード本体
 
 (draft: DI やクリーンアーキへの理解が必要そうなので、かなり時間かかりそう)
 
-# # まとめ
+# まとめ
 
 https://docs.github.com/ja/actions
 これすべて目を通しておいたほうがよさそう。
 
-# # 最後に
+# 最後に
 
 やっぱり強い人の手頃な大きさのリポジトリを読んで公式ドキュメントと照らし合わせて勉強していくの参考になる〜
 公開してくれていることに感謝です 🙏

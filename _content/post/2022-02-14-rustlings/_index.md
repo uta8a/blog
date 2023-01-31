@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: rustlings を読んだ
-description: rustlings を読み終えました
 draft: false
+description: rustlings を読み終えました
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2022-02-14T16:08:04+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:59:45+09:00
 ---
 
 [rustlings](https://github.com/rust-lang/rustlings) を読み終えました。

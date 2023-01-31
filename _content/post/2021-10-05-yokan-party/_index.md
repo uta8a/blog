@@ -1,16 +1,17 @@
 ---
-layout: post
+type: post
 title: '[writeup::procon] Yokan Party'
-description: Yokan Partyを解いた記録
 draft: false
+description: Yokan Partyを解いた記録
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2021-10-05T16:44:38+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:53:14+09:00
 ---
-
-# Yokan Party
 
 ## link
 

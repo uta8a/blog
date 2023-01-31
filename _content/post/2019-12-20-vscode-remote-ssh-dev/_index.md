@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: '開発環境メモ: VSCodeでローカルの仮想環境にRemote SSH'
-description: 広島大学 IT エンジニアアドベントカレンダーの 9 日目です。 
 draft: false
+description: 広島大学 IT エンジニアアドベントカレンダーの 9 日目です。 
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2019-12-20T12:04:56+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:04:51+09:00
 ---
 
 この記事は [広島大学 IT エンジニアアドベントカレンダー] の 9 日目です。  

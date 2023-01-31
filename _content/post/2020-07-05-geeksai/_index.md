@@ -1,13 +1,16 @@
 ---
-layout: post
+type: post
 title: 技育祭2020参加記
-description: 技育祭2020に参加しました
 draft: false
+description: 技育祭2020に参加しました
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-07-05T19:18:36+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:14:36+09:00
 ---
 
 # Day1

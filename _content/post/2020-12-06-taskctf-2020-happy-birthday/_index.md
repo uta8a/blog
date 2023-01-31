@@ -1,19 +1,22 @@
 ---
-layout: post
+type: post
 title: taskctf2020 writeup
-description: 広島大学 IT エンジニア Advent Calendar 2020 の 15 日目です。
 draft: false
+description: 広島大学 IT エンジニア Advent Calendar 2020 の 15 日目です。
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: 2020-12-06T23:57:56+09:00
   - summary: hugoにmigrate
     date: 2022-05-25T07:19:22+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T21:24:43+09:00
 ---
 
 - この記事は [広島大学 IT エンジニア Advent Calendar 2020](https://adventar.org/calendars/5209) の 15 日目です。
 - 今回は、12/6 に行われた taskctf の writeup を書いていきます。
 
-## # taskctf 概要
+# taskctf 概要
 
 - [Tasker さん](https://twitter.com/task4233) が誕生日に開いた CTF です。誕生日は 12 月 5 日のようですが、諸用により一日遅れでの開催となったようです。去年も開催されていて、Amazon Wish List に flag をひそませるなど面白い工夫が見られる、クイズ寄りの CTF です。
 - 僕は `KasumiSensei` として出て終了 20 分前にようやく全完しました。CTF で全部解けるのはどんな CTF でも楽しいですし、僕は初めてなのかな？とにかくこの成功した感覚を忘れないようにしよう！と思って writeup を書きます。
@@ -23,15 +26,15 @@ changelog:
 
 ![p-2](./p-2.png)
 
-## # Welcome
+# Welcome
 
 - `taskctf{g00d_luck_h4ve_fun}`
 
-## # アンケート
+# アンケート
 
 - `taskctf{Th4nk_u_f0r_pl4ying!}`
 
-## # guess `` `?v=` ``
+# guess `` `?v=` ``
 
 ```
 ?v=t1zPpBwRbAw
@@ -44,13 +47,13 @@ changelog:
 - 限定公開の動画にたどり着き、その概要欄に Flag があった。
 - `taskctf{h0w_w4s_it?}`
 
-## # social hacking
+# social hacking
 
 - `` guess `?v=` ``の動画でパスワードがむにゃむにゃと言っていて、最初聞こえなかったがその後言い直している。onigirt に誕生日をつける。
 - お誕生日 CTF だけど 1 日遅れているので、`onigiri1205` をパスワードとして zip が開けた。
 - `taskctf{n0t1ce_soci4l_h4ck1ng}`
 
-## # OSINT 3
+# OSINT 3
 
 ```
 友人が奇抜なTシャツを着てきた。
@@ -100,7 +103,7 @@ changelog:
 - これは簡単。「駅 大仏」でググって画像検索を順に見ていくとあった。
 - `taskctf{大船駅}`
 
-## # grass flag
+# grass flag
 
 ```
 interesting contributions
@@ -199,13 +202,13 @@ with open("./Date", "r") as f:
 
 - なんかコードバグらせている気もするが、`taskctf{lmao}`で OK
 
-## # Caesar Cipher Translator
+# Caesar Cipher Translator
 
 - 難読化 js をじっと眺めると、`alert`でなにかできそうだと分かる。その後で`old_alert`が発火している。
 - `alert()`を console に貼って、アラートが出るのを確認して、console にもう一度`alert("injected")`を貼ると、Flag が出てきた。
 - `taskctf{n1ce_inject10n!}`
 
-## # Gacha
+# Gacha
 
 ```go
 package main
@@ -296,7 +299,7 @@ func gachaHandler(w http.ResponseWriter, r *http.Request) {
 {"flag":"taskctf{Y0u_h4ve_4_gre4t_luck}"}
 ```
 
-## # Evil Eval
+# Evil Eval
 
 ```
 シーザー暗号の次は, base64をデコードするページを実装したらしい。
@@ -308,6 +311,6 @@ flag.txtが同じディレクトリにあるらしいから, それを読みだ�
 - `exec("cat ./flag.txt")`がしたいなあと思ってうまくいかない。よく考えると result に値を入れる必要がある。
 - `file_get_contents(\"./flag.txt\")`これを base64 encode したものを入れると flag が出てきた。
 
-## # 終わりに
+# 終わりに
 
 - お誕生日おめでとうございます。僕も CTF 開きたいな(作問...)

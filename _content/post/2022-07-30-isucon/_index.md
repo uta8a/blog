@@ -1,16 +1,17 @@
 ---
-layout: post
+type: post
 title: ISUCON12予選で0点だったので反省する
-description: ISUCON12予選で上手くやれなかったので反省です
 draft: false
+description: ISUCON12予選で上手くやれなかったので反省です
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 見出し作成
     date: 2022-07-30T18:14:18+09:00
   - summary: 完成
     date: 2022-07-30T19:52:17+09:00
+  - summary: migrate to lume
+    date: 2023-01-31T22:03:21+09:00
 ---
-
-# ISUCON12予選で0点だったので反省する
 
 ブログを書くまでがISUCONです！ということで、点数も低くやれたことも少ないので恥ずかしいところも大きいですが書こうと思います。
 
