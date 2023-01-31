@@ -177,21 +177,118 @@ const getSlug = (path: string): string => {
   return splitted[splitted.length - 2];
 }
 
+const pipelinedOgp = (ty: string, slug: string, basename: string): string => {
+  return `/img/${ty}/${slug}/${basename}`
+}
+
+const initSync = async () => {
+  // delete all files in post, diary, img
+  const existsPost = await isExists('./post');
+  const existsDiary = await isExists('./diary');
+  const existsImg = await isExists('./img');
+  if (existsPost) {
+    await Deno.remove('./post', { recursive: true });
+  }
+  if (existsDiary) {
+    await Deno.remove('./diary', { recursive: true });
+  }
+  if (existsImg) {
+    await Deno.remove('./img', { recursive: true });
+  }
+  // mkdir -p
+  await Deno.mkdir('./post', { recursive: true });
+  await Deno.mkdir('./diary', { recursive: true });
+  await Deno.mkdir('./img', { recursive: true });
+}
+
 const syncContent = async (): Promise<void> => {
-  let articles: Content[] = [];
+  /// delete all post, diary, img
+  await initSync();
+  /// for index page, articles variable
+  const articles: Content[] = [];
   /// Markdown pipeline
   for await (const entry of expandGlob(`./_content/**/**/_index.md`)) {
     const ty = getTy(entry.path);
     const slug = getSlug(entry.path);
-    // const path = `./_content/${ty}/${slug}`;
+    const path = `./_content/${ty}/${slug}`;
     const raw = await Deno.readTextFile(entry.path);
     const { frontMatter: _, body, attrs } = extract<Data>(raw);
-    // TODO: frontmatterを整形して新しいMarkdownをpost/diaryにgenerate
+    if (attrs.draft) continue; // next article, skip `draft: true`
+    /// Copy Image
+    let existsDir = false;
+    for await (const img of expandGlob(`${path}/*`)) {
+      if (img.name.slice(-3) === ".md") continue; // Skip markdown
+      if (!existsDir) {
+        await Deno.mkdir(`./img/${ty}/${slug}`, { recursive: true });
+        existsDir = true;
+      }
+      await Deno.copyFile(img.path, `./img/${ty}/${slug}/${img.name}`);
+    }
+    /// Pipelined markdown
     const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
+    const out: Record<string, unknown> = {
+      layout: "layouts/content.njk",
+      title: attrs.title,
+      description: attrs.description,
+      ogp: pipelinedOgp(ty, slug, attrs.ogp),
+      changelog: attrs.changelog,
+      last_edited: lastEdited,
+      body: body,
+    };
+    await Deno.writeTextFile(
+      `./${ty}/${slug}.yml`,
+      stringify(out),
+    );
+    /// Push data to articles
+    articles.push({
+      ty: ty as "diary" | "post",
+      title: attrs.title,
+      description: attrs.description,
+      path: `/${ty}/${slug}`,
+      date: lastEdited
+    });
   }
   /// index page
-  /// image pipeline
-  /// copy all files, delete .md after copy
+  /// post/index.yml
+  const postOut: Record<string, unknown> = {
+    layout: "layouts/post.njk",
+    title: "技術記事一覧 - diaryです",
+    description: "技術記事一覧",
+    ogp: "/img/post/ogp-big.webp",
+    body: articles.filter(v => v.ty === 'post'),
+  }
+  await Deno.writeTextFile(
+    `./post/index.yml`,
+    stringify(postOut),
+  );
+  /// diary/index.yml
+  const diaryOut: Record<string, unknown> = {
+    layout: "layouts/diary.njk",
+    title: "日記一覧 - diaryです",
+    description: "日記一覧",
+    ogp: "/img/diary/ogp-big.webp",
+    body: articles.filter(v => v.ty === 'diary'),
+  }
+  await Deno.writeTextFile(
+    `./diary/index.yml`,
+    stringify(diaryOut),
+  );
+  /// index.yml
+  const rootOut: Record<string, unknown> = {
+    layout: "layouts/root.njk",
+    title: "diaryです",
+    description: "uta8aのブログ記事たち",
+    ogp: "/img/ogp-big.webp",
+    body: articles,
+  }
+  await Deno.writeTextFile(
+    `./index.yml`,
+    stringify(rootOut),
+  );
+  /// Copy from assets
+  await Deno.copyFile(`./_asset/ogp-post.png`, `./img/post/ogp.png`);
+  await Deno.copyFile(`./_asset/ogp-diary.png`, `./img/diary/ogp.png`);
+  await Deno.copyFile(`./_asset/ogp-root.png`, `./img/ogp.png`);
 }
 
 /// @main
