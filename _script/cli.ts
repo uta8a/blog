@@ -66,17 +66,13 @@ type Span = {
   changelog: Changelog[];
   body: BodyContent[];
 };
-type Changelog = {
-  summary: string;
-  date: string;
-};
 
 interface YamlData {
   title: string;
   description: string;
   body: TableRecord[];
 }
-interface Data {
+interface DataX {
   title: string;
   draft: boolean;
   path: string;
@@ -140,9 +136,100 @@ const mergeData = async (filepath: string) => {
   return { skip: false, path: attrs.path, data: data, attrs: attrs };
 };
 
-// @main
+const makeContent = async (ty: string, dirname: string): Promise<void> => {
+  await Deno.mkdir(`./_content/${ty}/${dirname}`);
+  const raw = await Deno.readTextFile(`_template/content.md`);
+  const iso = dayjs().tz().format('YYYY-MM-DDTHH:mm:ss+09:00');
+  const body = await eta.render(raw, { ty: ty, iso: iso }) as string;
+  await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
+}
+
+
+type Changelog = {
+  summary: string;
+  date: string;
+};
+
+interface Data {
+  type: 'post' | 'diary';
+  title: string;
+  draft: boolean;
+  description: string;
+  ogp: string;
+  changelog: Changelog[];
+}
+
+type Content = {
+  ty: 'post' | 'diary',
+  title: string,
+  description: string,
+  path: string,
+  date: string,
+}
+
+const getTy = (path: string): string => {
+  const splitted = path.split('/');
+  return splitted[splitted.length - 3];
+}
+
+const getSlug = (path: string): string => {
+  const splitted = path.split('/');
+  return splitted[splitted.length - 2];
+}
+
+const syncContent = async (): Promise<void> => {
+  let articles: Content[] = [];
+  /// Markdown pipeline
+  for await (const entry of expandGlob(`./_content/**/**/_index.md`)) {
+    const ty = getTy(entry.path);
+    const slug = getSlug(entry.path);
+    // const path = `./_content/${ty}/${slug}`;
+    const raw = await Deno.readTextFile(entry.path);
+    const { frontMatter: _, body, attrs } = extract<Data>(raw);
+    // TODO: frontmatterを整形して新しいMarkdownをpost/diaryにgenerate
+    const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
+  }
+  /// index page
+  /// image pipeline
+  /// copy all files, delete .md after copy
+}
+
+/// @main
 const args = parse(Deno.args);
 
+if (args.post) {
+  const dirname: string = args.post;
+  try {
+    await makeContent('post', dirname);
+  } catch (err) {
+    console.log(err);
+    Deno.exit(1);
+  }
+  Deno.exit(0);
+}
+
+if (args.diary) {
+  const dirname: string = args.diary;
+  try {
+    await makeContent('diary', dirname);
+  } catch (err) {
+    console.log(err);
+    Deno.exit(1);
+  }
+  Deno.exit(0);
+}
+
+if (args.sync) {
+  try {
+    await syncContent();
+  } catch (err) {
+    console.log(err);
+    Deno.exit(1);
+  }
+  Deno.exit(0);
+}
+
+throw new Error('usage: deno -A cli.ts (--diary dirname | --post dirname | --sync)');
 
 
 // この後ろはメモとする
