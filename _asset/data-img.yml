@@ -1,0 +1,7 @@
+imagick:
+  - resize: [600, 600]
+    format: webp
+  - resize: [1200, 1200]
+    suffix: -big
+    format: webp
+    matches: ogp
