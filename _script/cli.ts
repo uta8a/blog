@@ -148,7 +148,7 @@ const syncContent = async (): Promise<void> => {
     title: "技術記事一覧 - diaryです",
     description: "技術記事一覧",
     ogp: "/img/post/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'post').sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
+    body: articles.filter(v => v.ty === 'post').sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
   }
   await Deno.writeTextFile(
     `./post/index.yml`,
@@ -160,7 +160,7 @@ const syncContent = async (): Promise<void> => {
     title: "日記一覧 - diaryです",
     description: "日記一覧",
     ogp: "/img/diary/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'diary').sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
+    body: articles.filter(v => v.ty === 'diary').sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
   }
   await Deno.writeTextFile(
     `./diary/index.yml`,
@@ -172,7 +172,7 @@ const syncContent = async (): Promise<void> => {
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles.sort((a, b) => dayjs(a.date).unix() - dayjs(b.date).unix()),
+    body: articles.sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
   }
   await Deno.writeTextFile(
     `./index.yml`,
@@ -182,6 +182,9 @@ const syncContent = async (): Promise<void> => {
   await Deno.copyFile(`./_asset/ogp-post.png`, `./img/post/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-diary.png`, `./img/diary/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-root.png`, `./img/ogp.png`);
+  await Deno.copyFile(`./_asset/data-img.yml`, `./img/_data.yml`);
+  await Deno.copyFile(`./_asset/data-diary.yml`, `./diary/_data.yml`);
+  await Deno.copyFile(`./_asset/data-post.yml`, `./post/_data.yml`);
 }
 
 /// @main
