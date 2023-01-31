@@ -1,0 +1,5 @@
+.DS_Store
+/_site/
+/_cache/
+/img/
+/node_modules
