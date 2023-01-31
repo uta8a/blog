@@ -2,6 +2,8 @@
 
 [@uta8a](https://github.com/uta8a) のブログです。
 
+構成などのドキュメントは [こちら](misc/doc.md)
+
 # License
 
 - このブログの文章は [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) の下で、ソースコードは [Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) の下で提供されます。
