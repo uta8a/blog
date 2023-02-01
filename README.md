@@ -21,4 +21,4 @@ Thanks to awesome project.
   - deno製静的サイトジェネレータを使用してサイトを作っています。
 - [lumeland/lume.land](https://github.com/lumeland/lume.land)
   - MIT
-  - HTML, CSSを参考にしました。
+  - HTML, CSSをとても参考にしました。
