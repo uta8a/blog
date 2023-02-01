@@ -20,7 +20,7 @@ changelog:
 Rust のコマンドライン引数パーサというと、[clap](https://github.com/clap-rs/clap)が有名だが、最近は StructOpt もよく見かけるのでこちらを使った。今調べたところ、StructOpt は clap v2.33 に依存しているらしい。
 以下のように、コマンドライン引数を struct へ変換する。引数から struct のメンバへの変換時の validation は、parse する関数を指定できて、今回は `parse_mydir_rule` という関数を作ってそれを指定している。
 
-```rust:main.rs
+```rust
 #[derive(StructOpt, Debug)]
 #[structopt(name = "pdir")]
 struct Opt {
@@ -41,7 +41,7 @@ fn main() {
 初期化処理を行い static な global 変数を作る方法として、 [lazy_static](https://github.com/rust-lang-nursery/lazy-static.rs) が有名だが、最近は OnceCell も使われている。
 今回は、ファイル名を数字アルファベット大文字小文字、ハイフン、アンダーバー、ドットのみに制限したかったので regex クレートを使ったが、このとき毎回 Regex を生成しているのかよく分からず、初期化したとき一度だけ計算するようにしたくて使った。
 
-```rust:main.rs
+```rust
 use regex::Regex;
 use once_cell::sync::Lazy;
 
@@ -144,7 +144,7 @@ anyhow の Result を返す関数で、thiserror を使った enum でエラー�
 
 下のように、コマンドオプションがオンになっていたら、ディレクトリを `cargo` を流して作成し、workspace のところは直接ファイルを生成するようにした。個人的にわかりやすいコマンド体系で、変数を直接入れることは危険なため避けるが、こういう固定のコマンド発行のときは使っていくつもり。
 
-```rust:main.rs
+```rust
 use std::process::Command;
 
 if opt.atcoder {
