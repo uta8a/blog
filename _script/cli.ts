@@ -144,7 +144,7 @@ const syncContent = async (): Promise<void> => {
   /// index page
   /// post/index.yml
   const postOut: Record<string, unknown> = {
-    layout: "layouts/post.njk",
+    layout: "layouts/list.njk",
     title: "技術記事一覧 - diaryです",
     description: "技術記事一覧",
     ogp: "/img/post/ogp-big.webp",
@@ -156,7 +156,7 @@ const syncContent = async (): Promise<void> => {
   );
   /// diary/index.yml
   const diaryOut: Record<string, unknown> = {
-    layout: "layouts/diary.njk",
+    layout: "layouts/list.njk",
     title: "日記一覧 - diaryです",
     description: "日記一覧",
     ogp: "/img/diary/ogp-big.webp",
@@ -168,7 +168,7 @@ const syncContent = async (): Promise<void> => {
   );
   /// index.yml
   const rootOut: Record<string, unknown> = {
-    layout: "layouts/root.njk",
+    layout: "layouts/list.njk",
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",

@@ -1,0 +1,30 @@
+---
+layout: ./base.njk
+page_css: list.css
+---
+
+<div class="list">
+  <header class="list-header">
+    <h1 class="title">{{ title }}</h1>
+    <p>{{ description }}</p>
+    <hr class="list-hr">
+  </header>
+  <main class="list-body">
+    <ol class="card-list">
+      {% for content in body %}
+      <li class="card">
+        <a class="card-link" href="{{ content.path }}">
+          <span class="created">{{ content.created }}</span>
+          {% if content.ty %}
+          <span class="ty">{{ content.ty }}</span>
+          {% endif %}
+          <img src="/img/{{ content.path }}/ogp.webp" />
+          <p class="description">{{ content.description }}</p>
+          
+          
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </main>
+</div>
