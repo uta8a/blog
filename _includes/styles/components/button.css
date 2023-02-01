@@ -1,3 +1,4 @@
+/* Ref. lume.land (MIT): https://github.com/lumeland/lume.land */
 .button {
   background: var(--background, none);
   color: var(--color, currentColor);
