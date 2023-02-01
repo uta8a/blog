@@ -1,0 +1,187 @@
+:root {
+  /* Fonts */
+  --font-display: var(--font-ui);
+  --font-ui: -apple-system, "BlinkMacSystemFont", "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", "sans-serif", "Segoe UI Emoji";
+  --font-code: "Menlo", "Consolas", "Ubuntu Mono", "monospace";
+
+  /* Text styles */
+  --text-display-size: clamp(25px, 10vw, 45px);
+  --text-display-height: 0.95;
+  --text-display: 700 var(--text-display-size) / var(--text-display-height)
+    var(--font-display);
+  --text-display-spacing: -0.045em;
+  --text-heading-size: clamp(20px, 8vw, 50px);
+  --text-heading: 700 var(--text-heading-size) / 1.1 var(--font-display);
+  --text-heading-spacing: -0.03em;
+  --text-title-size: clamp(20px, 6vw, 30px);
+  --text-title: 600 var(--text-title-size) / 1.2 var(--font-display);
+  --text-title-spacing: -0.03em;
+  --text-body-size: clamp(12px, 4vw, 16px);
+  --text-navbar-size: clamp(14px, 4vw, 18px);
+  --text-body: var(--text-body-size) / 1.65 var(--font-ui);
+  --text-navbar: var(--text-navbar-size) var(--font-ui);
+  --text-body-bold: 600 var(--text-body-size) / 1.6 var(--font-ui);
+  --text-navbar-bold: 600 var(--text-navbar-size) var(--font-ui);
+  --text-body-spacing: -0.02em;
+  --text-caption: 15px/1.6 var(--font-ui);
+  --text-caption-bold: 600 15px/1.6 var(--font-ui);
+  --text-caption-mini: 13px/1.6 var(--font-ui);
+  --text-caption-mini-bold: 600 13px/1.6 var(--font-ui);
+  --text-code: 16px/1.6 var(--font-code);
+
+  /* Colors */
+  /* Tokens */
+  --color-red-400: hsl(0deg, 50%, 40%);
+  --color-red-500: hsl(0deg, 50%, 50%);
+  --color-red-600: hsl(0deg, 70%, 60%);
+  --color-white: hsl(200deg, 20%, 100%);
+  --color-white-alpha: hsla(200deg, 20%, 100%, 0.9);
+  --color-black-970: hsl(200deg, 20%, 97%);
+  --color-black-930: hsl(200deg, 20%, 93%);
+  --color-black-860: hsl(200deg, 20%, 86%);
+  --color-black-650: hsl(200deg, 20%, 65%);
+  --color-black-350: hsl(200deg, 20%, 35%);
+  --color-black-240: hsl(200deg, 20%, 24%);
+  --color-black-180: hsl(200deg, 20%, 18%);
+  --color-black-140: hsl(200deg, 20%, 14%);
+  --color-black-100: hsl(200deg, 20%, 10%);
+  --color-black-100-alpha: hsla(200deg, 20%, 10%, 0.9);
+  --color-yellow-800: hsl(50deg, 80%, 80%);
+  --color-yellow-750: hsl(50deg, 80%, 75%);
+  --color-yellow-200: hsl(50deg, 80%, 20%);
+  --color-brown-600: hsl(50deg, 10%, 60%);
+  --color-brown-160: hsl(50deg, 10%, 16%);
+  --color-brown-200: hsl(50deg, 10%, 20%);
+
+  /* Borders */
+  --border-radius-small: 5px;
+  --border-radius: 10px;
+
+  /* Spaces */
+  --margin: max(25px, 5vw);
+  --max-width: 1200px;
+  --column-gap-0: 10px;
+  --column-gap-1: 25px;
+  --column-gap-2: 50px;
+  --column-gap-3: 100px;
+  --row-gap-0: 25px;
+  --row-gap-1: clamp(20px, 5vh, 50px);
+  --row-gap-2: clamp(40px, 10vh, 100px);
+  --row-gap-3: clamp(60px, 15vh, 150px);
+  --row-gap-4: clamp(80px, 20vh, 200px);
+}
+
+/* Theme light mode */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-primary: var(--color-red-500);
+  --color-primary-1: var(--color-red-400);
+  --color-foreground: var(--color-black-100);
+  --color-foreground-1: var(--color-black-240);
+  --color-background: var(--color-white);
+  --color-background-a: var(--color-white-alpha);
+  --color-background-1: var(--color-black-970);
+  --color-background-2: var(--color-black-930);
+  --color-background-3: var(--color-black-860);
+
+  --color-prettylights-syntax-comment: #6e7781;
+  --color-prettylights-syntax-constant: #0550ae;
+  --color-prettylights-syntax-entity: #8250df;
+  --color-prettylights-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-syntax-entity-tag: #116329;
+  --color-prettylights-syntax-keyword: #cf222e;
+  --color-prettylights-syntax-string: #0a3069;
+  --color-prettylights-syntax-variable: #953800;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-syntax-string-regexp: #116329;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #0550ae;
+  --color-prettylights-syntax-markup-italic: #24292f;
+  --color-prettylights-syntax-markup-bold: #24292f;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-syntax-markup-inserted-text: #116329;
+  --color-prettylights-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-syntax-markup-changed-text: #953800;
+  --color-prettylights-syntax-markup-changed-bg: #ffd8b5;
+  --color-prettylights-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-syntax-meta-diff-range: #8250df;
+  --color-prettylights-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-syntax-constant-other-reference-link: #0a3069;
+  --color-fg-default: #24292f;
+  --color-fg-muted: #57606a;
+  --color-fg-subtle: #6e7781;
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f6f8fa;
+  --color-border-default: #d0d7de;
+  --color-border-muted: hsla(210, 18%, 87%, 1);
+  --color-neutral-muted: rgba(175, 184, 193, 0.2);
+  --color-accent-fg: #0969da;
+  --color-accent-emphasis: #0969da;
+  --color-attention-subtle: #fff8c5;
+  --color-danger-fg: #cf222e;
+}
+
+/* Theme dark mode */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-primary: var(--color-red-600);
+  --color-primary-1: var(--color-red-400);
+  --color-foreground: var(--color-white);
+  --color-foreground-1: var(--color-black-650);
+  --color-background: var(--color-black-100);
+  --color-background-a: var(--color-black-100-alpha);
+  --color-background-1: var(--color-black-140);
+  --color-background-2: var(--color-black-180);
+  --color-background-3: var(--color-black-240);
+
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-storage-modifier-import: #c9d1d9;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #f85149;
+  --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+  --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+  --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-syntax-string-regexp: #7ee787;
+  --color-prettylights-syntax-markup-list: #f2cc60;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+  --color-prettylights-syntax-markup-italic: #c9d1d9;
+  --color-prettylights-syntax-markup-bold: #c9d1d9;
+  --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+  --color-prettylights-syntax-markup-deleted-bg: #67060c;
+  --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+  --color-prettylights-syntax-markup-inserted-bg: #033a16;
+  --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+  --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+  --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+  --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+  --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-syntax-brackethighlighter-angle: #8b949e;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58;
+  --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+  --color-fg-default: #c9d1d9;
+  --color-fg-muted: #8b949e;
+  --color-fg-subtle: #484f58;
+  --color-canvas-default: #0d1117;
+  --color-canvas-subtle: #161b22;
+  --color-border-default: #30363d;
+  --color-border-muted: #21262d;
+  --color-neutral-muted: rgba(110, 118, 129, 0.4);
+  --color-accent-fg: #58a6ff;
+  --color-accent-emphasis: #1f6feb;
+  --color-attention-subtle: rgba(187, 128, 9, 0.15);
+  --color-danger-fg: #f85149;
+}
