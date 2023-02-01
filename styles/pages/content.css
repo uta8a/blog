@@ -61,7 +61,7 @@
 .content-body {
   /* Ref. github-markdown-css (MIT): https://github.com/sindresorhus/github-markdown-css */
   /* Tweaked by @uta8a */
-  & * {
+  &:not(pre > code) {
     color: var(--color-fg-default);
     font: var(--text-body-size);
     line-height: 1.5;
