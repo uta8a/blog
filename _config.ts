@@ -1,5 +1,4 @@
 import lume from "lume/mod.ts";
-import prism from 'lume/plugins/prism.ts';
 import sitemap from 'lume/plugins/sitemap.ts';
 import postcss from 'lume/plugins/postcss.ts';
 import imagick from 'lume/plugins/imagick.ts';
@@ -27,7 +26,6 @@ site.ignore('.vscode');
 site.ignore('misc');
 site.ignore('README.md');
 
-site.use(prism());
 site.use(sitemap());
 site.use(postcss());
 site.use(imagick());
