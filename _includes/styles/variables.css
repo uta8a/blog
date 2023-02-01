@@ -1,3 +1,6 @@
+/* Ref. lume.land (MIT): https://github.com/lumeland/lume.land */
+/* Ref. github-markdown-css (MIT): https://github.com/sindresorhus/github-markdown-css */
+/* Tweaked by @uta8a */
 :root {
   /* Fonts */
   --font-display: var(--font-ui);

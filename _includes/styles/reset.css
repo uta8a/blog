@@ -16,12 +16,6 @@ button {
   cursor: revert;
 }
 
-ol,
-ul,
-menu {
-  list-style: none;
-}
-
 img {
   max-width: 100%;
 }
