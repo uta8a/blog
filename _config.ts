@@ -2,7 +2,6 @@ import lume from "lume/mod.ts";
 import sitemap from 'lume/plugins/sitemap.ts';
 import postcss from 'lume/plugins/postcss.ts';
 import imagick from 'lume/plugins/imagick.ts';
-import katex from 'lume/plugins/katex.ts';
 import date from 'lume/plugins/date.ts';
 import modifyUrls from "lume/plugins/modify_urls.ts";
 
@@ -18,6 +17,8 @@ const site = lume({
   location: new URL("https://blog.uta8a.net/"),
 }, { markdown });
 
+site.copy('prism.js');
+
 site.ignore('_asset');
 site.ignore('_content');
 site.ignore('_script');
@@ -29,7 +30,6 @@ site.ignore('README.md');
 site.use(sitemap());
 site.use(postcss());
 site.use(imagick());
-site.use(katex());
 site.use(date());
 site.use(modifyUrls({
   fn: (url, page) => {
@@ -48,6 +48,9 @@ site.use(modifyUrls({
       return url;
     }
     if (/^\/img\//.test(url)) {
+      return url;
+    }
+    if (/^\/prism\.js/.test(url)) {
       return url;
     }
     if (/^\/favicon\.ico/.test(url) || /^\/favicon-32x32\.png/.test(url) || /^\/favicon-16x16\.png/.test(url) || /^\/manifest\.json/.test(url) || /^\/apple-touch-icon\.png/.test(url)) {
