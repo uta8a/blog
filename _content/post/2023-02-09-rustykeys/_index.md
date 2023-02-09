@@ -7,6 +7,8 @@ ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2023-02-09T18:53:27+09:00"
+  - summary: はんだGNDの可能性追記
+    date: "2023-02-09T20:54:39+09:00"
 ---
 
 <!-- titleは自動で入る -->
@@ -101,6 +103,8 @@ Raspberry pi picoもはんだ付けします
 流れ: M1 macでやろうとする→失敗→Ubuntu serverでやろうとする→失敗→M1 macで再挑戦→できた
 
 M1 macでは `brew install capstone` や `rustup target add thumbv6m-none-eabi` をもう一度実行した後やったらいけた。何が効いたのか不明
+
+(GNDを別のGNDに変更したらうまく行ったのもあるので、もしかしたらGNDのはんだが甘い可能性があるかも...)
 
 ## 見かけたエラー集
 
