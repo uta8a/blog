@@ -7,6 +7,8 @@ ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2023-05-28T08:00:45+09:00"
+  - summary: "追記"
+    date: "2023-05-28T09:52:42+09:00"
 ---
 
 <!-- titleは自動で入る -->
@@ -232,6 +234,7 @@ match c {
 <div style="text-align:center;">オーパーツでしょこれ</div>
 
 - リガチャ、ZWJ、unicode-bidi、幽霊文字、縦書き、UTF-8の変換アルゴリズムとか、TSGCTFで出題されたffi, グリフウィキなどの話題が出ました。メモする気合いが足りないので諦めます...
+- 疑問がひと段落してしまったので、体系的なUnicode解説本を読んで疑問が出たら unicode.org 以下を当たるという感じに勉強を進めていきたいです。
 
 # 🖊️ 参考
 
