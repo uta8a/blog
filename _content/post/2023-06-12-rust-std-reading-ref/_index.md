@@ -10,7 +10,7 @@ changelog:
 ---
 
 <!-- titleは自動で入る -->
-第5回です。(#todo ここにTLDR書く)
+第5回です。`ref` を調べたり、関連するOpen issueを眺めました。
 
 # 🦀 会の流れ
 
