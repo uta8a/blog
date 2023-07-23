@@ -7,6 +7,8 @@ ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2023-07-22T14:22:26+09:00"
+  - summary: 誤字修正
+    date: "2023-07-23T14:33:32+09:00"
 ---
 
 <!-- titleは自動で入る -->
@@ -125,7 +127,7 @@ OSがなくてもプログラムを動かすことはできて、Arduinoだと�
 
 ここはまだ記事を書いている人が理解できていないのであやふやです。
 
-[jemalloc について調べたのでまとめた](https://zonomasa.hatenablog.com/entry/jemalloc_about) を読むと、jemallocはglibcに比べてマルチコア環境やフラグメンテーションが起こ理やすい環境でメモリ使用量の削減に寄与しそうに見えます。
+[jemalloc について調べたのでまとめた](https://zonomasa.hatenablog.com/entry/jemalloc_about) を読むと、jemallocはglibcに比べてマルチコア環境やフラグメンテーションが起こりやすい環境でメモリ使用量の削減に寄与しそうに見えます。
 mallocはメモリを確保してくれるもの、という認識しかなかったので [malloc(3)のメモリ管理構造](https://www.valinux.co.jp/technologylibrary/document/linux/malloc0001/) を読むと、メモリを管理する入れ物としてのArenaというものが大事であることが分かります。
 
 これ以上はちょっとよく分かってないのでRubyでjemallocを使うと本当に効果があるのかどうか個人的には理解できてないです。雑談会では何人かは記事を理解していたようでした。
