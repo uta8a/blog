@@ -7,12 +7,14 @@ ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2023-08-11T19:04:47+09:00"
+  - summary: 見出しを修正
+    date: "2023-08-11T20:21:30+09:00"
 ---
 
 <!-- titleは自動で入る -->
 NeoShowcase, やっぱスゲー！となったので書きました。
 
-# Showcaseすごい
+# 技育展予選でNeoShowcaseの発表があった
 
 > 本日の技育展予選で、サークル内PaaS「NeoShowcase」で登壇しました！
 > 大規模なプロジェクトなので、発表時間2分は全を伝えるにはあまりにも短すぎましたが、言うことを厳選して何とか2分で発表することができました！
@@ -46,7 +48,7 @@ SysAd班については [SysAd班](https://trap.jp/sysad/) の紹介を読んだ
 
 [SysAd班](https://trap.jp/sysad/) の紹介の下の方にリンクがありますが、SysAd TechBookという本も技術書典で販売されているので、もし興味あったらみてみると面白いと思います。TechBook 1とかは結構昔なんですが、運用に関して詳しい情報が書かれていて面白かったです。
 
-# NeoShowcase
+# NeoShowcase激アツ
 
 [スライド](https://docs.google.com/presentation/d/1m0pHPRcHGLteVl1rDGwQkTzhkDqNjhN91KHiNUXCeag/edit#slide=id.8WpuoBH5) を読んで、改めてスゲーという気持ちになりました。
 
