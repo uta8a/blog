@@ -1,7 +1,7 @@
 ---
 type: "diary"
 title: "社会に出て半年経った"
-draft: true
+draft: false
 description: "会社に入って働いていて、半年経過したので抽象的に振り返る"
 ogp: 'ogp-big.webp'
 changelog:
