@@ -1,19 +1,19 @@
-import { parse } from 'https://deno.land/std@0.166.0/flags/mod.ts';
-import * as eta from 'https://deno.land/x/eta@v1.6.0/mod.ts';
-import dayjs from 'https://cdn.skypack.dev/dayjs@v1.11.5';
-import utc from 'https://cdn.skypack.dev/dayjs@v1.11.5/plugin/utc';
-import timezone from 'https://cdn.skypack.dev/dayjs@v1.11.5/plugin/timezone';
-import duration from 'https://cdn.skypack.dev/dayjs@v1.11.5/plugin/duration';
-import relativeTime from 'https://cdn.skypack.dev/dayjs@v1.11.5/plugin/relativeTime';
-import { extract } from 'https://deno.land/std@0.172.0/encoding/front_matter/yaml.ts';
-import { stringify } from 'https://deno.land/std@0.172.0/encoding/yaml.ts';
-import { expandGlob } from 'https://deno.land/std@0.172.0/fs/expand_glob.ts';
+import { parse } from "https://deno.land/std@0.166.0/flags/mod.ts";
+import * as eta from "https://deno.land/x/eta@v1.6.0/mod.ts";
+import dayjs from "https://cdn.skypack.dev/dayjs@v1.11.5";
+import utc from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/utc";
+import timezone from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/timezone";
+import duration from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/duration";
+import relativeTime from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/relativeTime";
+import { extract } from "https://deno.land/std@0.172.0/encoding/front_matter/yaml.ts";
+import { stringify } from "https://deno.land/std@0.172.0/encoding/yaml.ts";
+import { expandGlob } from "https://deno.land/std@0.172.0/fs/expand_glob.ts";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
-dayjs.tz.setDefault('Asia/Tokyo');
+dayjs.tz.setDefault("Asia/Tokyo");
 
 async function isExists(filepath: string): Promise<boolean> {
   try {
@@ -27,10 +27,10 @@ async function isExists(filepath: string): Promise<boolean> {
 const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
   const raw = await Deno.readTextFile(`_template/content.md`);
-  const iso = dayjs().tz().format('YYYY-MM-DDTHH:mm:ss+09:00');
-  const body = await eta.render(raw, { ty: ty, iso: iso }) as string;
+  const iso = dayjs().tz().format("YYYY-MM-DDTHH:mm:ss+09:00");
+  const body = (await eta.render(raw, { ty: ty, iso: iso })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
-}
+};
 
 type Changelog = {
   summary: string;
@@ -38,7 +38,7 @@ type Changelog = {
 };
 
 interface Data {
-  type: 'post' | 'diary';
+  type: "post" | "diary";
   title: string;
   draft: boolean;
   description: string;
@@ -47,51 +47,51 @@ interface Data {
 }
 
 type Content = {
-  ty: 'post' | 'diary';
+  ty: "post" | "diary";
   title: string;
   description: string;
   path: string;
   date: string;
   created: string;
-}
+};
 
 const getTy = (path: string): string => {
-  const splitted = path.split('/');
+  const splitted = path.split("/");
   return splitted[splitted.length - 3];
-}
+};
 
 const getSlug = (path: string): string => {
-  const splitted = path.split('/');
+  const splitted = path.split("/");
   return splitted[splitted.length - 2];
-}
+};
 
 const pipelinedOgp = (ty: string, slug: string, basename: string): string => {
-  return `/img/${ty}/${slug}/${basename}`
-}
+  return `/img/${ty}/${slug}/${basename}`;
+};
 
 const getCreated = (slug: string): string => {
   return slug.slice(0, 10);
-}
+};
 
 const initSync = async () => {
   // delete all files in post, diary, img
-  const existsPost = await isExists('./post');
-  const existsDiary = await isExists('./diary');
-  const existsImg = await isExists('./img');
+  const existsPost = await isExists("./post");
+  const existsDiary = await isExists("./diary");
+  const existsImg = await isExists("./img");
   if (existsPost) {
-    await Deno.remove('./post', { recursive: true });
+    await Deno.remove("./post", { recursive: true });
   }
   if (existsDiary) {
-    await Deno.remove('./diary', { recursive: true });
+    await Deno.remove("./diary", { recursive: true });
   }
   if (existsImg) {
-    await Deno.remove('./img', { recursive: true });
+    await Deno.remove("./img", { recursive: true });
   }
   // mkdir -p
-  await Deno.mkdir('./post', { recursive: true });
-  await Deno.mkdir('./diary', { recursive: true });
-  await Deno.mkdir('./img', { recursive: true });
-}
+  await Deno.mkdir("./post", { recursive: true });
+  await Deno.mkdir("./diary", { recursive: true });
+  await Deno.mkdir("./img", { recursive: true });
+};
 
 const syncContent = async (): Promise<void> => {
   /// delete all post, diary, img
@@ -125,12 +125,10 @@ const syncContent = async (): Promise<void> => {
       ogp: pipelinedOgp(ty, slug, attrs.ogp),
       changelog: attrs.changelog,
       last_edited: lastEdited,
+      url: `/${ty}/${slug}.html`,
       body: body,
     };
-    await Deno.writeTextFile(
-      `./${ty}/${slug}.yml`,
-      stringify(out),
-    );
+    await Deno.writeTextFile(`./${ty}/${slug}.yml`, stringify(out));
     /// Push data to articles
     articles.push({
       ty: ty as "diary" | "post",
@@ -148,36 +146,33 @@ const syncContent = async (): Promise<void> => {
     title: "技術記事一覧 - diaryです",
     description: "技術記事一覧",
     ogp: "/img/post/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'post').sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
-  }
-  await Deno.writeTextFile(
-    `./post/index.yml`,
-    stringify(postOut),
-  );
+    body: articles
+      .filter((v) => v.ty === "post")
+      .sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
+  };
+  await Deno.writeTextFile(`./post/index.yml`, stringify(postOut));
   /// diary/index.yml
   const diaryOut: Record<string, unknown> = {
     layout: "layouts/list.njk",
     title: "日記一覧 - diaryです",
     description: "日記一覧",
     ogp: "/img/diary/ogp-big.webp",
-    body: articles.filter(v => v.ty === 'diary').sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
-  }
-  await Deno.writeTextFile(
-    `./diary/index.yml`,
-    stringify(diaryOut),
-  );
+    body: articles
+      .filter((v) => v.ty === "diary")
+      .sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
+  };
+  await Deno.writeTextFile(`./diary/index.yml`, stringify(diaryOut));
   /// index.yml
   const rootOut: Record<string, unknown> = {
     layout: "layouts/list.njk",
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles.sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
-  }
-  await Deno.writeTextFile(
-    `./index.yml`,
-    stringify(rootOut),
-  );
+    body: articles.sort(
+      (a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()
+    ),
+  };
+  await Deno.writeTextFile(`./index.yml`, stringify(rootOut));
   /// Copy from assets
   await Deno.copyFile(`./_asset/ogp-post.png`, `./img/post/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-diary.png`, `./img/diary/ogp.png`);
@@ -185,7 +180,8 @@ const syncContent = async (): Promise<void> => {
   await Deno.copyFile(`./_asset/data-img.yml`, `./img/_data.yml`);
   await Deno.copyFile(`./_asset/data-diary.yml`, `./diary/_data.yml`);
   await Deno.copyFile(`./_asset/data-post.yml`, `./post/_data.yml`);
-}
+  await Deno.copyFile(`./_asset/data-img.js`, `./img/_data.js`);
+};
 
 /// @main
 const args = parse(Deno.args);
@@ -193,7 +189,7 @@ const args = parse(Deno.args);
 if (args.post) {
   const dirname: string = args.post;
   try {
-    await makeContent('post', dirname);
+    await makeContent("post", dirname);
   } catch (err) {
     console.log(err);
     Deno.exit(1);
@@ -204,7 +200,7 @@ if (args.post) {
 if (args.diary) {
   const dirname: string = args.diary;
   try {
-    await makeContent('diary', dirname);
+    await makeContent("diary", dirname);
   } catch (err) {
     console.log(err);
     Deno.exit(1);
@@ -222,4 +218,6 @@ if (args.sync) {
   Deno.exit(0);
 }
 
-throw new Error('usage: deno -A cli.ts (--diary dirname | --post dirname | --sync)');
+throw new Error(
+  "usage: deno -A cli.ts (--diary dirname | --post dirname | --sync)"
+);
