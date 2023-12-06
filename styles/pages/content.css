@@ -139,9 +139,10 @@
     display: block;
     margin: auto;
     border-style: none;
-    max-width: 100%;
+    width: 60%;
     box-sizing: content-box;
     background-color: var(--color-canvas-default);
+    padding-bottom: 10px;
   }
 
   & code,
