@@ -1,0 +1,45 @@
+name: Deploy blog to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/deno
+          key: deno-${{ github.job }}-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            deno-${{ github.job }}-
+      - uses: actions/cache@v3
+        with:
+          path: _cache
+          key: lumecache-${{ github.job }}-${{ hashFiles('deno.lock') }}
+          restore-keys: |
+            lumecache-${{ github.job }}-
+      - uses: denoland/setup-deno@v1
+      - name: Generate raw YAML for build
+        run: deno task sync
+      - name: Build blog
+        run: deno task build
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_NAME }}
+          directory: _site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          wranglerVersion: '3'
