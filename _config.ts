@@ -1,9 +1,10 @@
 import lume from "lume/mod.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import postcss from "lume/plugins/postcss.ts";
-import imagick from "lume/plugins/imagick.ts";
+import transformImages from "lume/plugins/transform_images.ts";
 import date from "lume/plugins/date.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
+import nunjucks from "lume/plugins/nunjucks.ts";
 
 const markdown = {
   options: {
@@ -30,9 +31,10 @@ site.ignore(".vscode");
 site.ignore("misc");
 site.ignore("README.md");
 
+site.use(nunjucks());
 site.use(sitemap());
 site.use(postcss());
-site.use(imagick());
+site.use(transformImages());
 site.use(date());
 site.use(
   modifyUrls({
