@@ -5,6 +5,7 @@ import transformImages from "lume/plugins/transform_images.ts";
 import date from "lume/plugins/date.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import nunjucks from "lume/plugins/nunjucks.ts";
+import { ja } from "https://esm.sh/date-fns@3.6.0/locale/ja";
 
 const markdown = {
   options: {
@@ -35,7 +36,11 @@ site.use(nunjucks());
 site.use(sitemap());
 site.use(postcss());
 site.use(transformImages());
-site.use(date());
+site.use(
+  date({
+    locales: { ja },
+  })
+);
 site.use(
   modifyUrls({
     fn: (url, page, element) => {
