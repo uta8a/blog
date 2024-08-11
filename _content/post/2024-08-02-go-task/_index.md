@@ -1,7 +1,7 @@
 ---
 type: "post"
 title: "タスクランナーとして go-task/task を仕事で使っている"
-draft: true
+draft: false
 description: "terraformに関わるオペレーションにタスクランナーを活用している話"
 ogp: 'ogp-big.webp'
 changelog:
