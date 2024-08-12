@@ -6,7 +6,7 @@ description: "terraformに関わるオペレーションにタスクランナー
 ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
-    date: "2024-08-02T14:11:57+09:00"
+    date: "2024-08-12T09:00:00+09:00"
 ---
 
 <!-- titleは自動で入る -->
