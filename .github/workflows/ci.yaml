@@ -22,6 +22,7 @@ jobs:
     name: Publish to Cloudflare Pages
     steps:
       - name: Set timezone to JST
+        # lume の `log.date | date('DATETIME', 'ja')` が動くにはタイムゾーンを日本に変更する必要がある
         run: |
             sudo timedatectl set-timezone Asia/Tokyo
       - name: Checkout
