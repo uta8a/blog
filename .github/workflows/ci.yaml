@@ -21,10 +21,9 @@ jobs:
       deployments: write
     name: Publish to Cloudflare Pages
     steps:
-      - name: Set locale ja_JP.UTF-8
+      - name: Set timezone to JST
         run: |
-            sudo locale-gen ja_JP.UTF-8
-            sudo update-locale LANG=ja_JP.UTF-8
+            sudo timedatectl set-timezone Asia/Tokyo
       - name: Checkout
         uses: actions/checkout@v4
       - uses: actions/cache@v3
