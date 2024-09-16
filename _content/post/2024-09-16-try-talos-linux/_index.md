@@ -281,15 +281,3 @@ USBからは起動するけども、USBを引き抜いてapply-configで再起�
 Goran Nushkov さんによるRaspberry Pi 4へのTalos Linuxインストール記事も参考になった
 
 - [Installing Talos Linux on Raspberry Pi 4 - Kubito](https://kubito.dev/posts/talos-linux-raspberry-pi/)
-
----
-
-- 利点
-- setup
-- secure boot周りの挙動が辛い
-- 起動しないログ
-- 起動する方法
-
-shutdownする際には talosctl shutdownコマンドを打つ。https://www.talos.dev/v1.7/reference/cli/#talosctl-shutdown
-
-最初はprivate networkでやらないとかも(認証がない)
