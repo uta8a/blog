@@ -160,7 +160,7 @@ UEFIのSecure boot, Fast boot, Windows firmware updateを元に戻してみた�
 
 ## UEFIの設定を変えてみる
 
-Secure bootに3rd party CAを許可みたいなやつがあったので、おそらくUbuntuは3rd partyだろうと思って許可した。
+Secure bootに3rd party CAを許可みたいなやつがあったので、おそらくUbuntuやNixOSは3rd partyだろうと思って許可した。
 
 結果: NixOSが起動した。
 
