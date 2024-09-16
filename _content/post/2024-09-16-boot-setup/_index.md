@@ -55,7 +55,7 @@ USB側が正常っぽいなら、UEFI側を疑う
 
 環境は以下の通り。
 
-- PC: ThinkCentre M75q Gen5 AMD
+- PC: ThinkCentre M75q Tiny Gen5(AMD)
 - USB: Buffalo 32GB RUF3-K32GA-BK/N
 
 時系列
