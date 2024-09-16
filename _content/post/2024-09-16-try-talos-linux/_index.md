@@ -224,6 +224,21 @@ IP周りはk8s-1マシン側でいじることにした。
 
 pingは通るけどtalosctlは通らないという状態。k8s-0の昔のconfigが残っていたのでtimeoutが発生している。Try installかReset installの画面でResetを選択して、まっさらな状態でやり直す。
 
+## ストレージのConfigがよく分からん
+
+USBからは起動するけども、USBを引き抜いてapply-configで再起動が走るとNVMeからTalos Linuxが立ち上がらず、bootable mediaがNVMe側にないと判定されてPXE bootの画面に遷移するようになりました。
+
+これはSSDにインストールできてないのが原因で、僕の場合は2つ原因がありました。
+
+- `disk: /dev/sda` になっている
+  - USBが刺さっているとこれが通るので、途中でUSBを引き抜くようにしました(多分あまり良くない)
+  - 正確にはinstall先を指定するので、 `disk: /dev/nvme0n1` に変更する。
+- `wipe: false` になっている
+  - なんかこれ入れないと書き込まれない？
+  - ディスクを消してOSを入れてもらいます。 `wipe: true` に変更する。
+
+`controlplane.yaml` を編集しても良いし、 `patch.yaml` みたいな適当なoverride用のYAMLを書いて `--config-patch "@patch.yaml"` オプションを使って `apply-config` をしても良い。
+
 ## 起動したので確認
 
 手順(詳細) にうまく行ったやり方は書いた。以下を確認している
