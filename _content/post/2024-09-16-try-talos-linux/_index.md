@@ -7,6 +7,8 @@ ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2024-09-16T10:06:25+09:00"
+  - summary: "install手順でUEFI設定画面に入るのはF2ではなくEnterだったので修正"
+    date: "2024-09-18T23:00:54+09:00"
 ---
 
 <!-- titleは自動で入る -->
@@ -93,7 +95,7 @@ Control plane node 1台のみのsetupをします。
   - 筆者の環境では `sudo dd if=Downloads/metal-amd64.iso of=/dev/disk4 bs=256m status=progress` で書き込んだ。(`disk4` とかは環境により異なる)
 - k8s-1: モニタとキーボードと有線のLANケーブルを接続
 - k8s-1: k8s-1マシンにUSBメモリを差して起動
-  - Lenovoの画面が見えたら急いでF2を押す
+  - Lenovoの画面が見えたら急いでEnterを押す
   - F1でUEFI設定画面...みたいな画面に遷移するので、F12を押して一時起動デバイスとしてUSB HDDを選択。ここでUSBが無ければおかしいのでUSBを変えたりISOイメージを変えたりする。
 - k8s-1: Try installみたいなのと、Reset installみたいなのが選択できる画面に遷移する。Try installを選択
   - 左上にLinuxのペンギンがいくつか出現する→起動ログが流れる→サマリー画面 へと遷移する
