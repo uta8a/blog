@@ -8,13 +8,15 @@ on:
 
 jobs:
   actions-timeline:
+    timeout-minutes: 11
     needs: [publish]
     runs-on: ubuntu-latest
     permissions:
       actions: read
     steps:
-      - uses: Kesin11/actions-timeline@v2
+      - uses: Kesin11/actions-timeline@da70beff098ff89b15d279e8bf2f60519a8dadd7 # v2.2.0
   publish:
+    timeout-minutes: 17
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -26,26 +28,26 @@ jobs:
         run: |
             sudo timedatectl set-timezone Asia/Tokyo
       - name: Checkout
-        uses: actions/checkout@v4
-      - uses: actions/cache@v3
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+      - uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
         with:
           path: ~/.cache/deno
           key: deno-${{ github.job }}-${{ hashFiles('deno.lock') }}
           restore-keys: |
             deno-${{ github.job }}-
-      - uses: actions/cache@v3
+      - uses: actions/cache@e12d46a63a90f2fae62d114769bbf2a179198b5c # v3.3.3
         with:
           path: _cache
           key: lumecache-${{ github.job }}-${{ hashFiles('deno.lock') }}
           restore-keys: |
             lumecache-${{ github.job }}-
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@ba9dcf3bc3696623d1add6a2f5181ee1b5143de5 # v1.3.0
       - name: Generate raw YAML for build
         run: deno task sync
       - name: Build blog
         run: deno task build
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
