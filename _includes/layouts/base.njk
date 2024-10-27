@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="canonical" href="{{ url | url(true) }}">
     
+    <link rel="alternate" href="/feed.rss" type="application/rss+xml" title="diaryです">
+    <link rel="alternate" href="/feed.json" type="application/json" title="diaryです">
+
     {% if page_css %}
       <link rel="stylesheet" href="/styles/pages/{{ page_css }}">
     {% endif %}

@@ -58,7 +58,7 @@ const feedItems = {
 };
 
 site.use(feed({
-  output: ["/all.rss", "/all.json"],
+  output: ["/feed.rss", "/feed.json"],
   query: "main_menu*=diary;|post",
   info: {
     ...feedInfo,
