@@ -330,7 +330,6 @@
   & code {
     font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
       Liberation Mono, monospace;
-    font-size: var(--text-body-size);
   }
 
   & pre {
@@ -338,7 +337,6 @@
     margin-bottom: 0;
     font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
       Liberation Mono, monospace;
-    font-size: var(--text-body-size);
     word-wrap: normal;
   }
 
