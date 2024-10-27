@@ -121,6 +121,7 @@ const syncContent = async (): Promise<void> => {
     const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
     const out: Record<string, unknown> = {
       layout: "layouts/content.njk",
+      ty: ty as "diary" | "post",
       title: attrs.title,
       description: attrs.description,
       ogp: pipelinedOgp(ty, slug, attrs.ogp),

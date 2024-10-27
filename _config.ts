@@ -59,7 +59,7 @@ const feedItems = {
 
 site.use(feed({
   output: ["/feed.rss", "/feed.json"],
-  query: "main_menu*=diary;|post",
+  query: "ty*=diary|post",
   info: {
     ...feedInfo,
     description: "uta8aのブログ記事たち",
@@ -68,7 +68,7 @@ site.use(feed({
 }));
 site.use(feed({
   output: ["/post.rss", "/post.json"],
-  query: "main_menu=post",
+  query: "ty=post",
   info: {
     ...feedInfo,
     description: "技術記事一覧",
@@ -77,7 +77,7 @@ site.use(feed({
 }));
 site.use(feed({
   output: ["/diary.rss", "/diary.json"],
-  query: "main_menu=diary;",
+  query: "ty=diary",
   info: {
     ...feedInfo,
     description: "日記一覧",
