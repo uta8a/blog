@@ -6,6 +6,7 @@ import date from "lume/plugins/date.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import nunjucks from "lume/plugins/nunjucks.ts";
 import { ja } from "https://esm.sh/date-fns@3.6.0/locale/ja";
+import feed from "lume/plugins/feed.ts";
 
 const markdown = {
   options: {
@@ -19,7 +20,7 @@ const site = lume(
   {
     location: new URL("https://blog.uta8a.net/"),
   },
-  { markdown }
+  { markdown },
 );
 
 site.copy("prism.js");
@@ -39,8 +40,51 @@ site.use(transformImages());
 site.use(
   date({
     locales: { ja },
-  })
+  }),
 );
+
+const feedInfo = {
+  title: "diaryです",
+  published: new Date(),
+  lang: "ja",
+  generator: true,
+};
+const feedItems = {
+  title: "=title",
+  description: "=description",
+  published: "=published",
+  updated: "=last_edited",
+  lang: "ja",
+};
+
+site.use(feed({
+  output: ["/all.rss", "/all.json"],
+  query: "main_menu*=diary;|post",
+  info: {
+    ...feedInfo,
+    description: "uta8aのブログ記事たち",
+  },
+  items: feedItems,
+}));
+site.use(feed({
+  output: ["/post.rss", "/post.json"],
+  query: "main_menu=post",
+  info: {
+    ...feedInfo,
+    description: "技術記事一覧",
+  },
+  items: feedItems,
+}));
+site.use(feed({
+  output: ["/diary.rss", "/diary.json"],
+  query: "main_menu=diary;",
+  info: {
+    ...feedInfo,
+    description: "日記一覧",
+  },
+  items: feedItems,
+}));
+
 site.use(
   modifyUrls({
     fn: (url, page, element) => {
@@ -86,6 +130,7 @@ site.use(
       /// その他はそのまま返す
       return url;
     },
-  })
+  }),
 );
+
 export default site;
