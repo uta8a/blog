@@ -117,6 +117,7 @@ const syncContent = async (): Promise<void> => {
       await Deno.copyFile(img.path, `./img/${ty}/${slug}/${img.name}`);
     }
     /// Pipelined markdown
+    const publishedDate = attrs.changelog[0].date;
     const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
     const out: Record<string, unknown> = {
       layout: "layouts/content.njk",
@@ -124,6 +125,7 @@ const syncContent = async (): Promise<void> => {
       description: attrs.description,
       ogp: pipelinedOgp(ty, slug, attrs.ogp),
       changelog: attrs.changelog,
+      published: publishedDate,
       last_edited: lastEdited,
       url: `/${ty}/${slug}.html`,
       body: body,
@@ -169,7 +171,7 @@ const syncContent = async (): Promise<void> => {
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
     body: articles.sort(
-      (a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()
+      (a, b) => dayjs(b.created).unix() - dayjs(a.created).unix(),
     ),
   };
   await Deno.writeTextFile(`./index.yml`, stringify(rootOut));
@@ -219,5 +221,5 @@ if (args.sync) {
 }
 
 throw new Error(
-  "usage: deno -A cli.ts (--diary dirname | --post dirname | --sync)"
+  "usage: deno -A cli.ts (--diary dirname | --post dirname | --sync)",
 );
