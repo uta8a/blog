@@ -58,6 +58,15 @@ const feedItems = {
 };
 
 site.use(feed({
+  output: ["/all.rss", "/all.json"],
+  query: "main_menu*=diary;|post",
+  info: {
+    ...feedInfo,
+    description: "uta8aのブログ記事たち",
+  },
+  items: feedItems,
+}));
+site.use(feed({
   output: ["/post.rss", "/post.json"],
   query: "main_menu=post",
   info: {
