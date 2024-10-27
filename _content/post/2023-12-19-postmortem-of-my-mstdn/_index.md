@@ -85,7 +85,7 @@ DNSの問題だろうと思って時間が経つのを待ってみてから動�
 
 これに沿ってやってみたところ、そもそもdigでAレコードが正しく引けていないことに気づきました。
 
-```
+```text
 $ dig mstdn.sns.uta8a.net
 
 ...
@@ -100,7 +100,7 @@ uta8a.net.		274	IN	SOA	ns-cloud-b1.googledomains.com. cloud-dns-hostmaster.googl
 
 さらにAWSのトラブルシューティングガイドを参考に試すと、ネームサーバをcloudflareのものにすると正しくAレコードが引けることが判明。
 
-```
+```text
 $ dig mstdn.sns.uta8a.net @chad.ns.cloudflare.com
 
 ...
@@ -122,7 +122,7 @@ DNS周りの問題は解決したと考えて、アプリケーションと証�
 
 `lsof` でポートを使用しているプロセスを確認。nginxのみが動いているようです(これは後に嘘だと判明します。traefikも動いていたようです。)
 
-```
+```text
 $ sudo lsof -i:443
 [sudo] password for <username>:
 COMMAND  PID     USER   FD   TYPE DEVICE SIZE/OFF NODE NAME

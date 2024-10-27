@@ -66,7 +66,6 @@ $$
 
 - 形はだいたい一緒な気がするが、例えば$y \rightarrow y^2$のような変換は超楕円曲線ではなくなってしまうし、この変換で何を同一視しているのかは分からなかった。
 
-```
 https://en.wikipedia.org/wiki/Hyperelliptic_curve
 https://neuromancer.sk/article/25
 https://mystiz.hk/posts/2020-12-20-hxpctf-hyper/
@@ -75,5 +74,3 @@ https://www.iisec.ac.jp/proc/vol0002/iisec_proc_002_p043.pdf
 https://pwnthem0le.polito.it/2020/12/20/hxpCTF-2020-Hyper-writeup/
 https://mattyuu.hatenadiary.com/entry/2017/01/29/161758
 https://www.josephsurin.me/posts/2020-12-21-hxp-ctf-2020-hyper-writeup
-
-```

@@ -41,7 +41,7 @@ changelog:
 
 以下のように権限を`install/`以下のシェルスクリプトに与えて実行し環境を作ります。ここは時間がかかるので気長に待ちましょう。
 
-```
+```text
 vagrant@vagrant $
 chmod +x ~/src/install/*.sh
 cd ~/src/install/
@@ -59,7 +59,7 @@ source ~/.bashrc
 想定解においては`backend/Dockerfile`のみを変更すれば OK です。  
 ref. docker-compose https://docs.docker.com/compose/
 
-```
+```bash
 sudo docker-compose build
 sudo docker-compose up -d
 sudo docker-compose exec backend /bin/sh
@@ -116,7 +116,7 @@ busybox では`ash`なので bash が使えません。コンテナに入って�
 問題が解けているか CI でチェックするために CircleCI を導入しました。このとき`git tag`で特定タグがついているときのみテストを走らせたかったのですがなかなかうまくいかず苦労しました。  
 以下のように workflows で制御することでうまくいきました。
 
-```
+```yaml
 workflows:
   version: 2.1
   chal-1:
@@ -138,7 +138,7 @@ workflows:
 問題が公開されていないのでこのシェルスクリプトは何をしているのか分からず苦労しました。おそらく DB が立ち上がるのを待つのだと思うのですが、[Compose の起動順番の制御](https://docs.docker.com/compose/startup-order/)で紹介されている [wait-for-it](https://github.com/vishnubob/wait-for-it) はそのままでは busybox 環境は ash なため動作しません。  
 悩んだ末に ash に`nc`があることに気づき、以下のようにしました。
 
-```
+```text
 #!/bin/sh
 timeout 30 sh -c "until nc db 3306 ;do sleep 1; done" && /usr/local/bin/server
 ```
@@ -167,7 +167,7 @@ docker-compose では`http://backend:8080/`のようにコンテナ名でアク�
 
 `backend/Dockerfile`
 
-```
+```text
 FROM golang:alpine
 
 RUN apk -U add git
@@ -188,7 +188,7 @@ ENTRYPOINT ["/usr/local/bin/exec-webapp.sh"]
 
 `backend/Dockerfile`
 
-```
+```text
 FROM golang:alpine AS builder
 
 RUN apk -U add git

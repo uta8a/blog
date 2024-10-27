@@ -26,7 +26,7 @@ changelog:
 
 以下の環境で確認しています。
 
-```
+```text
 Windows 10 Home
 Vagrant 2.2.6
 VirtualBox 6.0.14

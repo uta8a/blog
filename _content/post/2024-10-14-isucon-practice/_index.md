@@ -30,7 +30,7 @@ alp, pt-query-digest, dstatを入れた。htopは元々入っていた。
 
 pt-query-digest のためのスロークエリ有効化で、 `/etc/mysql/mysql.conf.d/mysqld.cnf` を編集しても以下のように反映されてなかった。`slow_query_log` が `OFF` のままになっている。
 
-```
+```text
 mysql> show variables like 'slow%';
 +---------------------+-----------------------------------------+
 | Variable_name       | Value                                   |
@@ -46,7 +46,7 @@ mysql> ^DBye
 
 mysqlを `systemctl restart mysql` で再起動したら反映された
 
-```
+```text
 mysql> show variables like 'slow%';
 +---------------------+-------------------------------+
 | Variable_name       | Value                         |
@@ -100,7 +100,7 @@ sudo tail -n 3667 /var/log/nginx/access.log > ./access-1.log
 
 htopの様子 DB 150%, APP 25%, pdns server 15% なので、DBをまずは軽くする。
 
-```
+```text
 #    1 0xF7144185D9A142A426A36DC... 137.0045 29.1%   5610 0.0244  0.01 SELECT livestream_tags
 #    2 0x84B457C910C4A79FC9EBECB...  64.6100 13.7%   9896 0.0065  0.01 SELECT icons
 #    3 0xDA556F9115773A1A99AA016...  38.1828  8.1% 117016 0.0003  0.01 ADMIN PREPARE
@@ -115,7 +115,7 @@ SELECT * FROM livestream_tags WHERE livestream_id = 7528\G
 
 EXPLAINの結果、rowsが11012と多いのでインデックスを貼る。
 
-```
+```text
 mysql> EXPLAIN SELECT * FROM livestream_tags WHERE livestream_id = 7528;
 +----+-------------+-----------------+------------+------+---------------+------+---------+------+-------+----------+-------------+
 | id | select_type | table           | partitions | type | possible_keys | key  | key_len | ref  | rows  | filtered | Extra       |
@@ -131,7 +131,7 @@ ALTER TABLE livestream_tags ADD INDEX livestream_id_idx(livestream_id);
 
 インデックスが貼られたことを確認
 
-```
+```text
 mysql> SHOW INDEX FROM livestream_tags;
 +-----------------+------------+-------------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 | Table           | Non_unique | Key_name          | Seq_in_index | Column_name   | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
@@ -150,7 +150,7 @@ mysql> SHOW INDEX FROM livestream_tags;
 
 htopでまだDBが重い
 
-```
+```text
 #    1 0x84B457C910C4A79FC9EBECB... 79.1512 20.3%  12425 0.0064  0.01 SELECT icons
 #    2 0xDA556F9115773A1A99AA016... 50.8827 13.1% 147232 0.0003  0.00 ADMIN PREPARE
 #    3 0xF1B8EF06D6CA63B24BFF433... 32.2053  8.3%   3043 0.0106  0.02 SELECT users livestreams livecomments
@@ -244,7 +244,7 @@ sudo cat /var/log/mysql/mysql-slow.log | wc -l
 
 htopでまだDBが重い
 
-```
+```text
 #    1 0xDA556F9115773A1A99AA016... 52.1469 16.4% 164209 0.0003  0.00 ADMIN PREPARE
 #    2 0x38BC86A45F31C6B1EE32467... 36.1570 11.4%  15278 0.0024  0.00 SELECT themes
 #    3 0xF1B8EF06D6CA63B24BFF433... 24.9528  7.9%   3558 0.0070  0.01 SELECT users livestreams livecomments
@@ -258,7 +258,7 @@ administrator command: Prepare\G
 
 `main.go` で以下の修正
 
-```
+```go
 conf.InterpolateParams = true
 ```
 
@@ -268,7 +268,7 @@ conf.InterpolateParams = true
 
 htopでまだDBが重い
 
-```
+```text
 #    1 0x38BC86A45F31C6B1EE324671... 52.3956 14.6% 19449 0.0027  0.00 SELECT themes
 #    2 0x4ADE2DC90689F1C4891749AF... 39.3800 11.0% 45807 0.0009  0.00 DELETE SELECT livecomments
 #    3 0xF1B8EF06D6CA63B24BFF433E... 32.7476  9.2%  3763 0.0087  0.02 SELECT users livestreams livecomments
@@ -280,7 +280,7 @@ htopでまだDBが重い
 SELECT * FROM themes WHERE user_id = 1039\G
 ```
 
-```
+```text
 mysql> EXPLAIN SELECT * FROM themes WHERE user_id = 1039;
 +----+-------------+--------+------------+------+---------------+------+---------+------+------+----------+-------------+
 | id | select_type | table  | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
@@ -292,7 +292,7 @@ mysql> EXPLAIN SELECT * FROM themes WHERE user_id = 1039;
 
 rowsが1403
 
-```
+```text
 mysql> SHOW INDEX FROM themes;
 +--------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 | Table  | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
@@ -312,7 +312,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 確認
 
-```
+```text
 mysql> SHOW INDEX FROM themes;
 +--------+------------+-------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 | Table  | Non_unique | Key_name    | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
@@ -329,7 +329,7 @@ mysql> SHOW INDEX FROM themes;
 
 htopでまだDBが重い
 
-```
+```text
 #    1 0x4ADE2DC90689F1C4891749AF... 39.1518 11.2% 47709 0.0008  0.00 DELETE SELECT livecomments
 #    2 0xF1B8EF06D6CA63B24BFF433E... 38.1143 10.9%  3886 0.0098  0.02 SELECT users livestreams livecomments
 #    3 0xDB74D52D39A7090F224C4DEE... 37.0023 10.6%  3888 0.0095  0.02 SELECT users livestreams reactions
@@ -366,7 +366,7 @@ select * from  livecomments
 
 rowsの数を見たい
 
-```
+```text
 mysql> EXPLAIN select * from  livecomments WHERE id = 517 AND livestream_id = 7532 AND (SELECT COUNT(*) FROM (SELECT '次の周年も一緒に祝いたい' AS text) AS texts INNER JOIN (SELECT CONCAT('%', '意識深層視', '%')AS pattern) AS patterns ON texts.text LIKE patterns.pattern) >= 1;
 +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-----------------------------------------------------+
 | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra                                               |
@@ -383,7 +383,7 @@ mysql> EXPLAIN select * from  livecomments WHERE id = 517 AND livestream_id = 75
 
 クエリもよく分からないので、以下のように部分を実行したりしてた
 
-```
+```text
 mysql> SELECT '次の周年も一緒に祝いたい' AS text;
 +--------------------------------------+
 | text                                 |
@@ -453,7 +453,7 @@ mysql> SELECT '次の周年も一緒に祝いたい' AS text;
 
 DB 100, APP 50くらいになってきた
 
-```
+```text
 #    1 0x64CC8A4E8E4B390203375597... 33.2685  9.5%   635 0.0524  0.01 SELECT ng_words
 #    2 0xF1B8EF06D6CA63B24BFF433E... 33.1687  9.5%  3504 0.0095  0.02 SELECT users livestreams livecomments
 #    3 0xDB74D52D39A7090F224C4DEE... 31.4546  9.0%  3507 0.0090  0.02 SELECT users livestreams reactions
@@ -467,7 +467,7 @@ SELECT id, user_id, livestream_id, word FROM ng_words WHERE user_id = 1013 AND l
 
 インデックスは `id`, `word` に貼られている。
 
-```
+```text
 mysql> SHOW INDEX FROM ng_words;
 +----------+------------+---------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 | Table    | Non_unique | Key_name      | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
@@ -489,7 +489,7 @@ ALTER TABLE ng_words ADD INDEX livestream_id_idx(livestream_id);
 
 # `SELECT FROM users, livestreams, livecomments` を軽くする
 
-```
+```text
 #    1 0xF1B8EF06D6CA63B24BFF433E... 46.2941 14.0%  4030 0.0115  0.02 SELECT users livestreams livecomments
 #    2 0xDB74D52D39A7090F224C4DEE... 40.8759 12.3%  4035 0.0101  0.02 SELECT users livestreams reactions
 #    3 0xFBC5564AE716EAE82F20BFB4... 29.1511  8.8% 82637 0.0004  0.00 SELECT tags
@@ -518,7 +518,7 @@ DB 100, APP 50でDBが下がらない
 
 # まだ `SELECT FROM livestream, livecomments` が重い
 
-```
+```text
 SELECT IFNULL(SUM(l2.tip), 0) FROM livestreams l
 		INNER JOIN livecomments l2 ON l2.livestream_id = l.id
 		WHERE l.user_id = 368\G
@@ -527,7 +527,7 @@ SELECT IFNULL(SUM(l2.tip), 0) FROM livestreams l
 さっき改善したとこが重い
 インデックスのせいだった
 
-```
+```sql
 ALTER TABLE livecomments ADD INDEX livestream_id_idx(livestream_id);
 ALTER TABLE livestreams ADD INDEX user_id_idx(user_id);
 ```
@@ -536,7 +536,7 @@ ALTER TABLE livestreams ADD INDEX user_id_idx(user_id);
 
 # `SELECT FROM users, livestreams, reactions` を軽くする
 
-```
+```text
 #    1 0xDB74D52D39A7090F224C4DEE... 67.0881 24.0%  5851 0.0115  0.01 SELECT users livestreams reactions
 #    2 0xFBC5564AE716EAE82F20BFB4... 28.6523 10.2% 93486 0.0003  0.00 SELECT tags
 #    3 0x59F1B6DD8D9FEC059E55B3BF... 23.6685  8.5%  1078 0.0220  0.01 SELECT reservation_slots
@@ -559,19 +559,19 @@ DB 90, APP 60 くらいになってきた
 
 # `tags` をインメモリにする
 
-```
+```text
 #    1 0xFBC5564AE716EAE82F20BFB... 26.0775 12.5% 100075 0.0003  0.00 SELECT tags
 #    2 0xFFFCA4D67EA0A788813031B... 22.4545 10.8%   5370 0.0042  0.01 COMMIT
 #    3 0x59F1B6DD8D9FEC059E55B3B... 20.6600  9.9%   1262 0.0164  0.01 SELECT reservation_slots
 ```
 
-```
+```sql
 SELECT * FROM tags WHERE id = 44\G
 ```
 
 idだからインデックスは貼られているはず
 
-```
+```text
 mysql> EXPLAIN SELECT * FROM tags WHERE id = 44;
 +----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
 | id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
@@ -626,7 +626,7 @@ DB 85, APP 65 みたいになってきた
 
 # (未改善) `COMMIT\G` 改善
 
-```
+```text
 #    1 0xFFFCA4D67EA0A788813031B8... 24.0409 12.9%  6173 0.0039  0.01 COMMIT
 #    2 0x59F1B6DD8D9FEC059E55B3BF... 21.5274 11.6%  1285 0.0168  0.01 SELECT reservation_slots
 #    3 0x22279D81D51006139E0C7640... 17.1941  9.2% 29766 0.0006  0.00 SELECT domains domainmetadata

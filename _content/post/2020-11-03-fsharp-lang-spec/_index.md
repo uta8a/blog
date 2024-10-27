@@ -103,13 +103,13 @@ minilang/
 
 - Ionide
 
-```
+```text
 $ code --install-extension ionide.ionide-fsharp
 ```
 
 - https://github.com/OmniSharp/omnisharp-vscode/issues/3077#issuecomment-498880626
 
-```
+```text
 $ sudo ln -sv /snap/dotnet-sdk/current/dotnet /usr/local/bin/dotnet
 ```
 
