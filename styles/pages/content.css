@@ -310,6 +310,12 @@
     padding-left: 2em;
   }
 
+  & ul ul,
+  & ul ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   & ol ol,
   & ul ol {
     list-style-type: lower-roman;
