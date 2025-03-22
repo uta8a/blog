@@ -5,7 +5,7 @@ import transformImages from "lume/plugins/transform_images.ts";
 import date from "lume/plugins/date.ts";
 import modifyUrls from "lume/plugins/modify_urls.ts";
 import nunjucks from "lume/plugins/nunjucks.ts";
-import { ja } from "https://esm.sh/date-fns@3.6.0/locale/ja";
+import { ja } from "npm:date-fns@4.1.0/locale/ja";
 import feed from "lume/plugins/feed.ts";
 
 const markdown = {

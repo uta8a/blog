@@ -1,5 +1,5 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v2.3.3/"
+    "lume/": "https://deno.land/x/lume@v2.5.3/"
   }
 }
