@@ -4,8 +4,9 @@
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",
     "serve": "deno task lume -s",
-    "post": "deno run -A _script/cli.ts --post",
-    "diary": "deno run -A _script/cli.ts --diary",
+    "post": "deno run --unstable-temporal -A _script/cli.ts --post",
+    "diary": "deno run --unstable-temporal -A _script/cli.ts --diary",
+    "chobi": "deno run --unstable-temporal -A _script/cli.ts --chobi",
     "sync": "deno run --unstable-temporal -A _script/cli.ts --sync"
   },
   "nodeModulesDir": "auto"

@@ -5,7 +5,7 @@ import { stringify } from "jsr:@std/yaml";
 import { expandGlob } from "jsr:@std/fs";
 import { compareDesc } from "jsr:@fabon/vremel";
 
-const eta = new Eta();
+const eta = new Eta({ views: "./_template" });
 
 async function isExists(filepath: string): Promise<boolean> {
   try {
@@ -18,10 +18,9 @@ async function isExists(filepath: string): Promise<boolean> {
 
 const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
-  const raw = await Deno.readTextFile(`_template/content.md`);
   const iso = Temporal.Now.instant().toZonedDateTimeISO("Asia/Tokyo")
     .toString();
-  const body = (await eta.render(raw, { ty: ty, iso: iso })) as string;
+  const body = (await eta.render("content.md", { ty: ty, iso: iso })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
 };
 
@@ -210,6 +209,22 @@ if (args.diary) {
   const dirname: string = args.diary;
   try {
     await makeContent("diary", dirname);
+  } catch (err) {
+    console.log(err);
+    Deno.exit(1);
+  }
+  Deno.exit(0);
+}
+
+if (args.chobi) {
+  try {
+    await makeContent(
+      "chobi",
+      Temporal.Now.plainDateTimeISO().toString().replace(/\:/g, "-").replace(
+        /\./g,
+        "-",
+      ),
+    );
   } catch (err) {
     console.log(err);
     Deno.exit(1);
