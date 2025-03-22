@@ -59,7 +59,7 @@ const feedItems = {
 };
 
 site.use(feed({
-  output: ["/feed.rss", "/feed.json"],
+  output: ["/feed.rss"],
   query: "ty*=diary|post",
   info: {
     ...feedInfo,
@@ -68,7 +68,7 @@ site.use(feed({
   items: feedItems,
 }));
 site.use(feed({
-  output: ["/post.rss", "/post.json"],
+  output: ["/post.rss"],
   query: "ty=post",
   info: {
     ...feedInfo,
@@ -77,7 +77,7 @@ site.use(feed({
   items: feedItems,
 }));
 site.use(feed({
-  output: ["/diary.rss", "/diary.json"],
+  output: ["/diary.rss"],
   query: "ty=diary",
   info: {
     ...feedInfo,
@@ -88,7 +88,7 @@ site.use(feed({
 
 site.use(
   modifyUrls({
-    fn: (url, page, element) => {
+    fn: (url, page, _element) => {
       /// Ignore URL link
       if (/^http:/.test(url)) {
         return url;

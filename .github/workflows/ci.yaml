@@ -21,8 +21,14 @@ jobs:
     permissions:
       contents: read
       deployments: write
+    env:
+      LANG: ja_JP.UTF-8
     name: Publish to Cloudflare Pages
     steps:
+      - name: ja_JP.UTF-8
+        run: |
+            sudo locale-gen ja_JP.UTF-8
+            sudo update-locale LANG=ja_JP.UTF-8
       - name: Set timezone to JST
         # lume の `log.date | date('DATETIME', 'ja')` が動くにはタイムゾーンを日本に変更する必要がある
         run: |
