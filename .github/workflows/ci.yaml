@@ -52,6 +52,9 @@ jobs:
         run: deno task sync
       - name: Build blog
         run: deno task build
+      - name: Set Content-Type header
+        run: |
+          echo "/feed.rss\n  Content-Type: application/xml" >> _site/_headers
       - name: Install Wrangler
         run: deno install --global --allow-scripts npm:wrangler@latest
       - name: Publish to Cloudflare Pages
