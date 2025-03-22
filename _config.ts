@@ -123,7 +123,7 @@ site.use(
         url = url.slice(2);
       }
       /// dotが含まれたら画像と見做してしまうことにする
-      if (/\./.test(url) && !/rss/.test(url)) {
+      if (/\./.test(url) && !/\.rss$/.test(url)) {
         const splitted = url.split(".");
         splitted.pop();
         return `/img/${page.src.path}/${splitted.join(".")}.webp`;
