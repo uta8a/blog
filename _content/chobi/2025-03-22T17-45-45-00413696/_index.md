@@ -1,5 +1,9 @@
 ---
 type: "chobi"
+title: ""
+draft: false
+description: ""
+ogp: 'ogp-big.webp'
 changelog:
   - summary: 記事作成
     date: "2025-03-22T17:45:45.005124096+09:00[Asia/Tokyo]"

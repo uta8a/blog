@@ -20,13 +20,14 @@ const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
   const iso = Temporal.Now.instant().toZonedDateTimeISO("Asia/Tokyo")
     .toString();
-  const body =
-    (await eta.render(ty === "chobi" ? "chobi.md" : "content.md", {
-      ty: ty,
-      iso: iso,
-    })) as string;
+  const body = (await eta.render(ty === "chobi" ? "chobi.md" : "content.md", {
+    ty: ty,
+    iso: iso,
+  })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
 };
+
+type ContentTy = "post" | "diary" | "chobi";
 
 type Changelog = {
   summary: string;
@@ -34,7 +35,7 @@ type Changelog = {
 };
 
 interface Data {
-  type: "post" | "diary";
+  type: ContentTy;
   title: string;
   draft: boolean;
   description: string;
@@ -43,7 +44,7 @@ interface Data {
 }
 
 type Content = {
-  ty: "post" | "diary";
+  ty: ContentTy;
   title: string;
   description: string;
   path: string;
@@ -70,10 +71,11 @@ const getCreated = (slug: string): string => {
 };
 
 const initSync = async () => {
-  // delete all files in post, diary, img
+  // delete all files in post, diary, img, chobi
   const existsPost = await isExists("./post");
   const existsDiary = await isExists("./diary");
   const existsImg = await isExists("./img");
+  const existsChobi = await isExists("./chobi");
   if (existsPost) {
     await Deno.remove("./post", { recursive: true });
   }
@@ -83,10 +85,14 @@ const initSync = async () => {
   if (existsImg) {
     await Deno.remove("./img", { recursive: true });
   }
+  if (existsChobi) {
+    await Deno.remove("./chobi", { recursive: true });
+  }
   // mkdir -p
   await Deno.mkdir("./post", { recursive: true });
   await Deno.mkdir("./diary", { recursive: true });
   await Deno.mkdir("./img", { recursive: true });
+  await Deno.mkdir("./chobi", { recursive: true });
 };
 
 const syncContent = async (): Promise<void> => {
@@ -117,7 +123,7 @@ const syncContent = async (): Promise<void> => {
     const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
     const out: Record<string, unknown> = {
       layout: "layouts/content.njk",
-      ty: ty as "diary" | "post",
+      ty: ty as ContentTy,
       title: attrs.title,
       description: attrs.description,
       ogp: pipelinedOgp(ty, slug, attrs.ogp),
@@ -130,7 +136,7 @@ const syncContent = async (): Promise<void> => {
     await Deno.writeTextFile(`./${ty}/${slug}.yml`, stringify(out));
     /// Push data to articles
     articles.push({
-      ty: ty as "diary" | "post",
+      ty: ty as ContentTy,
       title: attrs.title,
       description: attrs.description,
       path: `/${ty}/${slug}`,
