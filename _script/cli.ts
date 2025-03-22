@@ -20,7 +20,11 @@ const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
   const iso = Temporal.Now.instant().toZonedDateTimeISO("Asia/Tokyo")
     .toString();
-  const body = (await eta.render("content.md", { ty: ty, iso: iso })) as string;
+  const body =
+    (await eta.render(ty === "chobi" ? "chobi.md" : "content.md", {
+      ty: ty,
+      iso: iso,
+    })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
 };
 
