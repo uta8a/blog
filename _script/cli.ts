@@ -50,6 +50,7 @@ type Content = {
   path: string;
   date: string;
   created: string;
+  text: string;
 };
 
 const getTy = (path: string): string => {
@@ -92,6 +93,9 @@ const initSync = async () => {
   await Deno.mkdir("./post", { recursive: true });
   await Deno.mkdir("./diary", { recursive: true });
   await Deno.mkdir("./img", { recursive: true });
+  await Deno.mkdir("./img/post", { recursive: true });
+  await Deno.mkdir("./img/diary", { recursive: true });
+  await Deno.mkdir("./img/chobi", { recursive: true });
   await Deno.mkdir("./chobi", { recursive: true });
 };
 
@@ -142,6 +146,7 @@ const syncContent = async (): Promise<void> => {
       path: `/${ty}/${slug}`,
       date: lastEdited,
       created: getCreated(slug),
+      text: body.trim().replace(/\n/g, " ").slice(0, 100),
     });
   }
   /// index page
@@ -177,13 +182,32 @@ const syncContent = async (): Promise<void> => {
       ),
   };
   await Deno.writeTextFile(`./diary/index.yml`, stringify(diaryOut));
+  /// chobi/index.yml
+  const chobiOut: Record<string, unknown> = {
+    layout: "layouts/chobi.njk",
+    title: "ちょび - diaryです",
+    description: "小さな文章を書きます",
+    ogp: "/img/chobi/ogp-big.webp",
+    body: articles
+      .filter((v) => v.ty === "chobi")
+      .sort((a, b) =>
+        compareDesc(
+          Temporal.PlainDateTime.from(a.created),
+          Temporal.PlainDateTime.from(b.created),
+        )
+      ),
+  };
+  await Deno.writeTextFile(`./chobi/index.yml`, stringify(chobiOut));
   /// index.yml
   const rootOut: Record<string, unknown> = {
     layout: "layouts/list.njk",
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles.sort((a, b) =>
+    body: articles.filter((v) => v.ty === "diary" || v.ty === "post").sort((
+      a,
+      b,
+    ) =>
       compareDesc(
         Temporal.PlainDateTime.from(a.created),
         Temporal.PlainDateTime.from(b.created),
@@ -195,9 +219,11 @@ const syncContent = async (): Promise<void> => {
   await Deno.copyFile(`./_asset/ogp-post.png`, `./img/post/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-diary.png`, `./img/diary/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-root.png`, `./img/ogp.png`);
+  await Deno.copyFile(`./_asset/ogp-chobi.png`, `./img/chobi/ogp.png`);
   await Deno.copyFile(`./_asset/data-img.yml`, `./img/_data.yml`);
   await Deno.copyFile(`./_asset/data-diary.yml`, `./diary/_data.yml`);
   await Deno.copyFile(`./_asset/data-post.yml`, `./post/_data.yml`);
+  await Deno.copyFile(`./_asset/data-chobi.yml`, `./chobi/_data.yml`);
   await Deno.copyFile(`./_asset/data-img.js`, `./img/_data.js`);
 };
 

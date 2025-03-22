@@ -39,6 +39,7 @@ site.use(postcss());
 site.use(transformImages());
 site.use(
   date({
+    formats: {},
     locales: { ja },
   }),
 );
