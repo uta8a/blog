@@ -7,5 +7,6 @@
     "post": "deno run -A _script/cli.ts --post",
     "diary": "deno run -A _script/cli.ts --diary",
     "sync": "deno run -A _script/cli.ts --sync"
-  }
+  },
+  "nodeModulesDir": "auto"
 }
