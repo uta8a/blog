@@ -1,19 +1,11 @@
-import { parse } from "https://deno.land/std@0.166.0/flags/mod.ts";
-import * as eta from "https://deno.land/x/eta@v1.6.0/mod.ts";
-import dayjs from "https://cdn.skypack.dev/dayjs@v1.11.5";
-import utc from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/utc";
-import timezone from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/timezone";
-import duration from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/duration";
-import relativeTime from "https://cdn.skypack.dev/dayjs@v1.11.5/plugin/relativeTime";
-import { extract } from "https://deno.land/std@0.172.0/encoding/front_matter/yaml.ts";
-import { stringify } from "https://deno.land/std@0.172.0/encoding/yaml.ts";
-import { expandGlob } from "https://deno.land/std@0.172.0/fs/expand_glob.ts";
+import { parse } from "jsr:@std/flags";
+import { Eta } from "jsr:@eta-dev/eta";
+import { extractYaml } from "jsr:@std/front-matter";
+import { stringify } from "jsr:@std/yaml";
+import { expandGlob } from "jsr:@std/fs";
+import { compareDesc } from "jsr:@fabon/vremel";
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
-dayjs.extend(duration);
-dayjs.extend(relativeTime);
-dayjs.tz.setDefault("Asia/Tokyo");
+const eta = new Eta();
 
 async function isExists(filepath: string): Promise<boolean> {
   try {
@@ -27,7 +19,8 @@ async function isExists(filepath: string): Promise<boolean> {
 const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
   const raw = await Deno.readTextFile(`_template/content.md`);
-  const iso = dayjs().tz().format("YYYY-MM-DDTHH:mm:ss+09:00");
+  const iso = Temporal.Now.instant().toZonedDateTimeISO("Asia/Tokyo")
+    .toString();
   const body = (await eta.render(raw, { ty: ty, iso: iso })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
 };
@@ -104,7 +97,7 @@ const syncContent = async (): Promise<void> => {
     const slug = getSlug(entry.path);
     const path = `./_content/${ty}/${slug}`;
     const raw = await Deno.readTextFile(entry.path);
-    const { frontMatter: _, body, attrs } = extract<Data>(raw);
+    const { frontMatter: _, body, attrs } = extractYaml<Data>(raw);
     if (attrs.draft) continue; // next article, skip `draft: true`
     /// Copy Image
     let existsDir = false;
@@ -151,7 +144,12 @@ const syncContent = async (): Promise<void> => {
     ogp: "/img/post/ogp-big.webp",
     body: articles
       .filter((v) => v.ty === "post")
-      .sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
+      .sort((a, b) =>
+        compareDesc(
+          Temporal.PlainDateTime.from(a.created),
+          Temporal.PlainDateTime.from(b.created),
+        )
+      ),
   };
   await Deno.writeTextFile(`./post/index.yml`, stringify(postOut));
   /// diary/index.yml
@@ -162,7 +160,12 @@ const syncContent = async (): Promise<void> => {
     ogp: "/img/diary/ogp-big.webp",
     body: articles
       .filter((v) => v.ty === "diary")
-      .sort((a, b) => dayjs(b.created).unix() - dayjs(a.created).unix()),
+      .sort((a, b) =>
+        compareDesc(
+          Temporal.PlainDateTime.from(a.created),
+          Temporal.PlainDateTime.from(b.created),
+        )
+      ),
   };
   await Deno.writeTextFile(`./diary/index.yml`, stringify(diaryOut));
   /// index.yml
@@ -171,8 +174,11 @@ const syncContent = async (): Promise<void> => {
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles.sort(
-      (a, b) => dayjs(b.created).unix() - dayjs(a.created).unix(),
+    body: articles.sort((a, b) =>
+      compareDesc(
+        Temporal.PlainDateTime.from(a.created),
+        Temporal.PlainDateTime.from(b.created),
+      )
     ),
   };
   await Deno.writeTextFile(`./index.yml`, stringify(rootOut));
