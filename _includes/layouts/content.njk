@@ -20,7 +20,7 @@ page_css: content.css
       <ol>
       {% for log in changelog %}
         <li>
-        {{ log.date | date('DATETIME', 'ja') }}: {{ log.summary | md | striptags | safe }}
+        {{ log.date | replace('[Asia/Tokyo]', '') | date('DATETIME', 'ja') }}: {{ log.summary | md | striptags | safe }} {# Temporal style に対応して末尾localeを除去 #}
         </li>
       {%  endfor %}
       </ol>

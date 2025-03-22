@@ -5,7 +5,7 @@ import { stringify } from "jsr:@std/yaml";
 import { expandGlob } from "jsr:@std/fs";
 import { compareDesc } from "jsr:@fabon/vremel";
 
-const eta = new Eta();
+const eta = new Eta({ views: "./_template" });
 
 async function isExists(filepath: string): Promise<boolean> {
   try {
@@ -18,12 +18,16 @@ async function isExists(filepath: string): Promise<boolean> {
 
 const makeContent = async (ty: string, dirname: string): Promise<void> => {
   await Deno.mkdir(`./_content/${ty}/${dirname}`);
-  const raw = await Deno.readTextFile(`_template/content.md`);
   const iso = Temporal.Now.instant().toZonedDateTimeISO("Asia/Tokyo")
     .toString();
-  const body = (await eta.render(raw, { ty: ty, iso: iso })) as string;
+  const body = (await eta.render(ty === "chobi" ? "chobi.md" : "content.md", {
+    ty: ty,
+    iso: iso,
+  })) as string;
   await Deno.writeTextFile(`./_content/${ty}/${dirname}/_index.md`, body);
 };
+
+type ContentTy = "post" | "diary" | "chobi";
 
 type Changelog = {
   summary: string;
@@ -31,7 +35,7 @@ type Changelog = {
 };
 
 interface Data {
-  type: "post" | "diary";
+  type: ContentTy;
   title: string;
   draft: boolean;
   description: string;
@@ -40,12 +44,13 @@ interface Data {
 }
 
 type Content = {
-  ty: "post" | "diary";
+  ty: ContentTy;
   title: string;
   description: string;
   path: string;
   date: string;
   created: string;
+  text: string;
 };
 
 const getTy = (path: string): string => {
@@ -67,10 +72,11 @@ const getCreated = (slug: string): string => {
 };
 
 const initSync = async () => {
-  // delete all files in post, diary, img
+  // delete all files in post, diary, img, chobi
   const existsPost = await isExists("./post");
   const existsDiary = await isExists("./diary");
   const existsImg = await isExists("./img");
+  const existsChobi = await isExists("./chobi");
   if (existsPost) {
     await Deno.remove("./post", { recursive: true });
   }
@@ -80,10 +86,17 @@ const initSync = async () => {
   if (existsImg) {
     await Deno.remove("./img", { recursive: true });
   }
+  if (existsChobi) {
+    await Deno.remove("./chobi", { recursive: true });
+  }
   // mkdir -p
   await Deno.mkdir("./post", { recursive: true });
   await Deno.mkdir("./diary", { recursive: true });
   await Deno.mkdir("./img", { recursive: true });
+  await Deno.mkdir("./img/post", { recursive: true });
+  await Deno.mkdir("./img/diary", { recursive: true });
+  await Deno.mkdir("./img/chobi", { recursive: true });
+  await Deno.mkdir("./chobi", { recursive: true });
 };
 
 const syncContent = async (): Promise<void> => {
@@ -114,7 +127,7 @@ const syncContent = async (): Promise<void> => {
     const lastEdited = attrs.changelog[attrs.changelog.length - 1].date;
     const out: Record<string, unknown> = {
       layout: "layouts/content.njk",
-      ty: ty as "diary" | "post",
+      ty: ty as ContentTy,
       title: attrs.title,
       description: attrs.description,
       ogp: pipelinedOgp(ty, slug, attrs.ogp),
@@ -127,12 +140,13 @@ const syncContent = async (): Promise<void> => {
     await Deno.writeTextFile(`./${ty}/${slug}.yml`, stringify(out));
     /// Push data to articles
     articles.push({
-      ty: ty as "diary" | "post",
+      ty: ty as ContentTy,
       title: attrs.title,
       description: attrs.description,
       path: `/${ty}/${slug}`,
       date: lastEdited,
       created: getCreated(slug),
+      text: body.trim().replace(/\n/g, " ").slice(0, 100),
     });
   }
   /// index page
@@ -168,13 +182,32 @@ const syncContent = async (): Promise<void> => {
       ),
   };
   await Deno.writeTextFile(`./diary/index.yml`, stringify(diaryOut));
+  /// chobi/index.yml
+  const chobiOut: Record<string, unknown> = {
+    layout: "layouts/chobi.njk",
+    title: "ちょび - diaryです",
+    description: "小さな文章を書きます",
+    ogp: "/img/chobi/ogp-big.webp",
+    body: articles
+      .filter((v) => v.ty === "chobi")
+      .sort((a, b) =>
+        compareDesc(
+          Temporal.PlainDateTime.from(a.created),
+          Temporal.PlainDateTime.from(b.created),
+        )
+      ),
+  };
+  await Deno.writeTextFile(`./chobi/index.yml`, stringify(chobiOut));
   /// index.yml
   const rootOut: Record<string, unknown> = {
     layout: "layouts/list.njk",
     title: "diaryです",
     description: "uta8aのブログ記事たち",
     ogp: "/img/ogp-big.webp",
-    body: articles.sort((a, b) =>
+    body: articles.filter((v) => v.ty === "diary" || v.ty === "post").sort((
+      a,
+      b,
+    ) =>
       compareDesc(
         Temporal.PlainDateTime.from(a.created),
         Temporal.PlainDateTime.from(b.created),
@@ -186,9 +219,11 @@ const syncContent = async (): Promise<void> => {
   await Deno.copyFile(`./_asset/ogp-post.png`, `./img/post/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-diary.png`, `./img/diary/ogp.png`);
   await Deno.copyFile(`./_asset/ogp-root.png`, `./img/ogp.png`);
+  await Deno.copyFile(`./_asset/ogp-chobi.png`, `./img/chobi/ogp.png`);
   await Deno.copyFile(`./_asset/data-img.yml`, `./img/_data.yml`);
   await Deno.copyFile(`./_asset/data-diary.yml`, `./diary/_data.yml`);
   await Deno.copyFile(`./_asset/data-post.yml`, `./post/_data.yml`);
+  await Deno.copyFile(`./_asset/data-chobi.yml`, `./chobi/_data.yml`);
   await Deno.copyFile(`./_asset/data-img.js`, `./img/_data.js`);
 };
 
@@ -210,6 +245,22 @@ if (args.diary) {
   const dirname: string = args.diary;
   try {
     await makeContent("diary", dirname);
+  } catch (err) {
+    console.log(err);
+    Deno.exit(1);
+  }
+  Deno.exit(0);
+}
+
+if (args.chobi) {
+  try {
+    await makeContent(
+      "chobi",
+      Temporal.Now.plainDateTimeISO().toString().replace(/\:/g, "-").replace(
+        /\./g,
+        "-",
+      ),
+    );
   } catch (err) {
     console.log(err);
     Deno.exit(1);

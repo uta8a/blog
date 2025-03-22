@@ -1,0 +1,24 @@
+---
+layout: ./base.njk
+page_css: chobi.css
+---
+
+<div class="list">
+  <header class="list-header">
+    <h1 class="title">{{ title }}</h1>
+    <p>{{ description }}</p>
+    <hr class="list-hr">
+  </header>
+  <main class="list-body">
+    <ol class="">
+      {% for content in body %}
+      <li class="card">
+        <p class="description">{{ content.text | truncate(80) }}</p>
+        <div class="card-link">
+          <a class="created" href="{{ content.path }}">{{ content.created }}↗︎</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </main>
+</div>
