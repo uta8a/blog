@@ -186,7 +186,7 @@ const syncContent = async (): Promise<void> => {
   const chobiOut: Record<string, unknown> = {
     layout: "layouts/chobi.njk",
     title: "ちょび - diaryです",
-    description: "小さな文章を書きます",
+    description: "小さな文章を書きます。詳細は日付をクリックしてください。",
     ogp: "/img/chobi/ogp-big.webp",
     body: articles
       .filter((v) => v.ty === "chobi")
