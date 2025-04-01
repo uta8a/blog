@@ -1,7 +1,7 @@
 ---
 type: "diary"
 title: "社会人3年目になった"
-draft: true
+draft: false
 description: "いろいろ振り返る"
 ogp: 'ogp-big.webp'
 changelog:
