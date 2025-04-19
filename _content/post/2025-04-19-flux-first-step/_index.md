@@ -21,7 +21,7 @@ changelog:
 
 元記事が詳しいのですが、ざっくり解説すると「Git RepositoryからOCI RepositoryにmanifestをCIでpushして、CDツールはOCI Repositoryを定期的に見に行くようにする」という内容になっています。
 
-最近流行りのOCI Repositoryにコンテナイメージも突っ込んじゃうやつだ！と思いました。
+最近流行りのOCI Repositoryにコンテナイメージ以外も突っ込んじゃうやつだ！と思いました。
 OCI Repositoryにすることで嬉しいことは2点あり、Git Repositoryにはないもの(OCI artifactの署名、検証や脆弱性スキャン)が使えるようになってサプライチェーンセキュリティの観点でセキュアになるというのと、`git pull` をするわけではないので大規模な場合にパフォーマンスの向上が見込める、ということのようです。
 
 個人的なモチベーションとしてサプライチェーンセキュリティに興味があるので触ってみることにしました。
@@ -124,14 +124,14 @@ jobs:
 
 これでmainブランチ指定を回避しつつ、Jsonnetを使ってmanifestをOCI Repositoryにpushできました。
 
-注意: 私は公開リポジトリ [uta8a/infra](https://github.com/uta8a/infra) で作業しているので、外部からワークフローをキックされないようにGitHubの設定 Settings > Actions > General から "Require approval for all external contributors" を選択してSaveしています。
+注意: 僕は公開リポジトリ [uta8a/infra](https://github.com/uta8a/infra) で作業しているので、外部からワークフローをキックされないようにGitHubの設定 Settings > Actions > General から "Require approval for all external contributors" を選択してSaveしています。
 
 ## 3. FluxInstanceを作成する
 
 これでghcr.ioにmanifestが配置されたので、手元のk8sクラスタからそれを引っ張ってきます。
 ghcr.ioからpullするために認証情報が必要ですが、まずはそれ無しでFluxInstanceを作成します。
 
-FluxInstanceはクラスタ当たり通常1つだけ作成するもので、pathを指定してマニフェストのエントリーポイントに対応するものになります。ArgoCDのApplicationに対応するような複数のAppsは、kustomizeの中のResourceとして定義するようです。なので、FluxInstanceはApplicationとは紐づかない、上位概念だと思います。
+FluxInstanceはクラスタ当たり通常1つだけ作成するもので、pathを指定してmanifestのエントリーポイントに対応するものになります。ArgoCDのApplicationに対応するような複数のAppsは、kustomizeの中のResourceとして定義するようです。なので、FluxInstanceはApplicationとは紐づかない、上位概念だと思います。
 
 重要な部分だけ書きます。全体は[こちら](https://github.com/uta8a/infra/pull/3/files#diff-184f6ca75528902d38aa5ec60d2f61ba7ff2597ba5088429b938bf0df080d42e)
 
@@ -194,9 +194,11 @@ data:
 
 `server-side apply completed` みたいな表示が確認できます。
 
+これで実際にmanifestが反映されているのが確認できました。
+
 # その他
 
-- FluxはPlugin機構が無さそう。今回のtankaで `tk export` してkustomizeを生成する方法よりもいい感じにやるのは難しいかも。
+- FluxはPlugin機構が無さそうです。今回のtankaで `tk export` してkustomizeを生成する方法よりもいい感じにやるのは難しいかも。
 
 > Is there a Plugin support for Flux?
 > [https://github.com/fluxcd/flux2/discussions/2762](https://github.com/fluxcd/flux2/discussions/2762)
@@ -204,10 +206,10 @@ data:
 > No custom plugin support so can't really use tk directly. Instead you can pre-render your manifests (save them to Git) and have Flux use those. I ended up generating via tk export and wrapping with a kustomization.yaml that Flux v2 can use natively.
 > [https://github.com/grafana/tanka/discussions/483](https://github.com/grafana/tanka/discussions/483)
 
-- Fluxはkustomizeに寄っている感じがする
+- Fluxはkustomizeに寄っている感じがします。
   - ArgoCDにOCIサポート入ったらArgoCDに移行するかも。Jsonnetで書きたいので...
 
 # 終わりに
 
 Gitless GitOps, GitからのOCI移行はあったけどOCIからスタートする例は見当たらなかったのでブログとして残しておきました。
-今回はkindで手元でやるだけでしたが、そのうちおうちk8sにFlux入れようと思います。複数Appを定義するためにディレクトリ構成をいい感じにしたいですね。
+今回はkindで手元でやるだけでしたが、そのうちおうちk8sにFlux入れようと思います。複数Appを定義するためにディレクトリ構成を見直したいです。
