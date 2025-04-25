@@ -6,5 +6,11 @@
   "editor.formatOnSave": true,
   "[markdown]": {
     "editor.formatOnSave": false
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": false,
+    "scminput": false
   }
 }
