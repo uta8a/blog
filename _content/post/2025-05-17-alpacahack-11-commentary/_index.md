@@ -40,7 +40,7 @@ changelog:
 - python3起動して...
 - よっしゃ
 
-```
+```text
 >>> a = '\u0660'
 >>> a
 '٠'
@@ -185,7 +185,7 @@ VM61:1 Uncaught SyntaxError: Unexpected token 'with'Understand this error
 
 - URIスキームで、`//` ってどうなるんだろう
 
-```
+```text
 javascript://example.com;alert(123)/hoge?a#b
 0: "/hoge"
 1: "?a"
@@ -195,7 +195,7 @@ javascript://example.com;alert(123)/hoge?a#b
 - お！好きな文字を入れられそう！！
 - 改行するか
 
-```
+```text
 javascript://a\nalert("123");:b@example.com/c?d#e
 invalid 1は通るが、特に発火しない
 ```
