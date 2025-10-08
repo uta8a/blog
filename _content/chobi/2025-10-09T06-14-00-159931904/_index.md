@@ -111,9 +111,9 @@ GitHubでAppleによるソーシャルログインが可能に。
 # Next Action
 
 
-- [ ] ChatGPT Apps SDKを眺める
-- [ ] 検証したい
-	- [ ] S3 Common Runtimeによる高速化設定を入れる
-- [ ] 読みたい
-	- [ ] CloudSecurityConの一覧
-	- [ ] PostgresqlのEXPLAINの用語調べる
+- ChatGPT Apps SDKを眺める
+- 検証したい
+	- S3 Common Runtimeによる高速化設定を入れる
+- 読みたい
+	- CloudSecurityConの一覧
+	- PostgresqlのEXPLAINの用語調べる
