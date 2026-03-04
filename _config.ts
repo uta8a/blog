@@ -36,7 +36,9 @@ site.ignore("README.md");
 site.use(nunjucks());
 site.use(sitemap());
 site.use(postcss());
+site.add("./styles");
 site.use(transformImages());
+site.add("./img");
 site.use(
   date({
     formats: {},
