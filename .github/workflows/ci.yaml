@@ -27,12 +27,12 @@ jobs:
     steps:
       - name: ja_JP.UTF-8
         run: |
-            sudo locale-gen ja_JP.UTF-8
-            sudo update-locale LANG=ja_JP.UTF-8
+          sudo locale-gen ja_JP.UTF-8
+          sudo update-locale LANG=ja_JP.UTF-8
       - name: Set timezone to JST
         # lume の `log.date | date('DATETIME', 'ja')` が動くにはタイムゾーンを日本に変更する必要がある
         run: |
-            sudo timedatectl set-timezone Asia/Tokyo
+          sudo timedatectl set-timezone Asia/Tokyo
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
@@ -55,11 +55,10 @@ jobs:
       - name: Set Content-Type header
         run: |
           echo "/feed.rss\n  Content-Type: application/xml" >> _site/_headers
-      - name: Install Wrangler
-        run: deno install --global --allow-scripts npm:wrangler@latest
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy _site --project-name=${{ secrets.CLOUDFLARE_PAGES_PROJECT_NAME }}
+          packageManager: pnpm
