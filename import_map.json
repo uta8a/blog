@@ -1,5 +1,6 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v2.5.3/"
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.1/",
+    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.14/jsx-runtime.ts"
   }
 }
