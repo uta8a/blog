@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: var(--row-gap-0) 0 var(--row-gap-1);
 
-  & > * {
+  &>* {
     grid-column: 2;
   }
 }
@@ -35,21 +35,26 @@
 .content-footer {
   position: relative;
   color: var(--color-foreground);
+
   & * {
     list-style: none;
   }
+
   & details {
     cursor: pointer;
   }
+
   & summary {
     cursor: pointer;
     text-decoration: underline;
     padding-left: 10px;
   }
+
   & details[open] {
     & summary {
       padding-left: 0;
     }
+
     padding: 10px;
     padding-top: 0;
     border-radius: var(--border-radius);
@@ -59,6 +64,7 @@
 
 /* Markdown CSS */
 .content-body {
+
   /* Ref. github-markdown-css (MIT): https://github.com/sindresorhus/github-markdown-css */
   /* Tweaked by @uta8a */
   &:not(pre > code) {
@@ -158,6 +164,7 @@
     padding: 0;
     background-color: var(--color-border-default);
     border: 0;
+    margin: 1em 0;
   }
 
   & input {
@@ -227,7 +234,7 @@
     cursor: pointer;
   }
 
-  & details:not([open]) > *:not(summary) {
+  & details:not([open])>*:not(summary) {
     display: none !important;
   }
 
@@ -507,11 +514,11 @@
     content: "";
   }
 
-  & > *:first-child {
+  &>*:first-child {
     margin-top: 0 !important;
   }
 
-  & > *:last-child {
+  &>*:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -547,19 +554,19 @@
     margin-bottom: 16px;
   }
 
-  & blockquote > :first-child {
+  & blockquote> :first-child {
     margin-top: 0;
   }
 
-  & blockquote > :last-child {
+  & blockquote> :last-child {
     margin-bottom: 0;
   }
 
-  & sup > a::before {
+  & sup>a::before {
     content: "[";
   }
 
-  & sup > a::after {
+  & sup>a::after {
     content: "]";
   }
 
@@ -606,7 +613,7 @@
     list-style-type: lower-roman;
   }
 
-  & div > ol:not([type]) {
+  & div>ol:not([type]) {
     list-style-type: decimal;
   }
 
@@ -618,11 +625,11 @@
     margin-bottom: 0;
   }
 
-  & li > p {
+  & li>p {
     margin-top: 16px;
   }
 
-  & li + li {
+  & li+li {
     margin-top: 0.25em;
   }
 
@@ -684,7 +691,7 @@
     overflow: hidden;
   }
 
-  & span.frame > span {
+  & span.frame>span {
     display: block;
     float: left;
     width: auto;
@@ -712,7 +719,7 @@
     clear: both;
   }
 
-  & span.align-center > span {
+  & span.align-center>span {
     display: block;
     margin: 13px auto 0;
     overflow: hidden;
@@ -730,7 +737,7 @@
     clear: both;
   }
 
-  & span.align-right > span {
+  & span.align-right>span {
     display: block;
     margin: 13px 0 0;
     overflow: hidden;
@@ -760,7 +767,7 @@
     overflow: hidden;
   }
 
-  & span.float-right > span {
+  & span.float-right>span {
     display: block;
     margin: 13px auto 0;
     overflow: hidden;
@@ -788,7 +795,7 @@
     font-size: 100%;
   }
 
-  & pre > code {
+  & pre>code {
     padding: 0;
     margin: 0;
     word-break: normal;
@@ -900,7 +907,7 @@
     cursor: pointer;
   }
 
-  & .task-list-item + .task-list-item {
+  & .task-list-item+.task-list-item {
     margin-top: 3px;
   }
 
@@ -929,27 +936,34 @@
   display: grid;
   grid-template-columns: minmax(150px, 1.5fr) 8.5fr;
   grid-template-areas: "title description" "body body";
-  & > .content-table-title {
+
+  &>.content-table-title {
     grid-area: title;
     font-weight: bold;
   }
-  & > .content-table-description {
+
+  &>.content-table-description {
     grid-area: description;
     overflow: hidden;
     overflow-x: scroll;
     word-wrap: normal;
     white-space: nowrap;
+
     &::-webkit-scrollbar {
-      display: none; /* only chrome */
+      display: none;
+      /* only chrome */
     }
   }
-  & > .content-table-body {
+
+  &>.content-table-body {
     grid-area: body;
     margin: 0;
     padding: 0;
+
     & .row-name {
       padding: 0;
     }
+
     & li {
       margin: 0;
       padding: 4px 0;
@@ -957,29 +971,37 @@
       display: grid;
       grid-template-columns: 2fr 6fr 2fr 0.3fr;
       grid-template-areas: "title description tags status";
-      & > * {
+
+      &>* {
         overflow: hidden;
         overflow-x: scroll;
         word-wrap: normal;
         white-space: nowrap;
         margin-left: 5px;
+
         &::-webkit-scrollbar {
-          display: none; /* only chrome */
+          display: none;
+          /* only chrome */
         }
       }
+
       & .row-status {
         grid-area: status;
       }
+
       & .row-title {
         grid-area: title;
       }
+
       & .row-description {
         grid-area: description;
       }
+
       & .row-tags {
         grid-area: tags;
         display: flex;
       }
+
       & .row-tag {
         padding-left: 2px;
         overflow: hidden;
@@ -988,13 +1010,16 @@
         word-wrap: normal;
         grid-area: tags;
         flex-shrink: 0;
+
         &::before {
           content: "#";
         }
       }
+
       @media (max-width: 600px) {
         grid-template-columns: 1fr 1fr 0.2fr;
         grid-template-areas: "title description status";
+
         & .row-tags {
           display: none;
         }
